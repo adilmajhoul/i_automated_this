@@ -2,16 +2,20 @@ from playwright.sync_api import sync_playwright
 from playwright_stealth import stealth_sync
 
 with sync_playwright() as p:
-    for browser_type in [p.chromium, p.firefox, p.webkit]:
-        browser = browser_type.launch()
-        page = browser.new_page()
-        stealth_sync(page)
-        page.goto('http://whatsmyuseragent.org/')
-        page.screenshot(path=f'example-{browser_type.name}.png')
-        
-        page.wait_for_timeout(15000)  # Wait for 60 seconds
-        
-        browser.close()
+# for browser_type in [p.chromium, p.firefox, p.webkit]:
+    browser = p.chromium.launch(
+        executable_path='/usr/bin/google-chrome-stable', 
+        headless=False
+    )
+    # browser = browser_type.launch()
+    page = browser.new_page()
+    stealth_sync(page)
+    page.goto('http://whatsmyuseragent.org/')
+    page.screenshot(path=f'example-{'chromium'}.png')
+    
+    page.wait_for_timeout(15000)  # Wait for 60 seconds
+    
+    browser.close()
 
 # import re
 # from playwright.sync_api import Playwright, sync_playwright, expect
