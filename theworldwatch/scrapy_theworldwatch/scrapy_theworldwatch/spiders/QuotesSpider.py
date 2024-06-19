@@ -13,15 +13,7 @@ class TheworldwatchSpider(scrapy.Spider):
 
     def parse(self, response):
         # Loop through all videos on each page
-        for video in response.css(".item"):
-            yield {
-                "text": video.css(".title::text").get(),
-                "poster": video.css(".video-uploader::text").get(),
-                "views": video.css(".amount-views::text").get(),
-                "comments": video.css(".tme::text").get(),
-                "length": video.css(".drtn::text").get(),
-                "link": video.css(".item > a").attrib["href"],
-            }
+setup db pip
 
         # Follow pagination link and repeat the process
         next_sublink = response.css(".pagination-holder .next > a").attrib["href"]
