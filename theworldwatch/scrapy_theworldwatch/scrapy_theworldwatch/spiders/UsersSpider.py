@@ -1,5 +1,3 @@
-from curses import meta
-from turtle import title
 import scrapy
 from requests_html import HTMLSession
 
@@ -13,9 +11,9 @@ class UsersSpider(scrapy.Spider):
 
     # Custom settings for this spider
     custom_settings = {
-        "DOWNLOAD_DELAY": 2,  # Delay of 2 seconds between requests
+        "DOWNLOAD_DELAY": 4,  # Delay of 2 seconds between requests
         "CONCURRENT_REQUESTS_PER_DOMAIN": 1,  # Limit concurrent requests per domain
-        "DOWNLOAD_TIMEOUT": 15,  # Timeout for downloads (in seconds)
+        # "DOWNLOAD_TIMEOUT": 15,  # Timeout for downloads (in seconds)
         "RETRY_TIMES": 3,  # Number of times to retry failed requests
         "ITEM_PIPELINES": {
             "scrapy_theworldwatch.pipelines.UsersPipeline": 1,
