@@ -1,5 +1,31 @@
 [
     {
+        "label": "re",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "re",
+        "description": "re",
+        "detail": "re",
+        "documentation": {}
+    },
+    {
+        "label": "time",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "time",
+        "description": "time",
+        "detail": "time",
+        "documentation": {}
+    },
+    {
+        "label": "Playwright",
+        "importPath": "playwright.sync_api",
+        "description": "playwright.sync_api",
+        "isExtraImport": true,
+        "detail": "playwright.sync_api",
+        "documentation": {}
+    },
+    {
         "label": "sync_playwright",
         "importPath": "playwright.sync_api",
         "description": "playwright.sync_api",
@@ -8,11 +34,530 @@
         "documentation": {}
     },
     {
-        "label": "stealth_sync",
-        "importPath": "playwright_stealth",
-        "description": "playwright_stealth",
+        "label": "expect",
+        "importPath": "playwright.sync_api",
+        "description": "playwright.sync_api",
         "isExtraImport": true,
-        "detail": "playwright_stealth",
+        "detail": "playwright.sync_api",
+        "documentation": {}
+    },
+    {
+        "label": "scrapy",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "scrapy",
+        "description": "scrapy",
+        "detail": "scrapy",
+        "documentation": {}
+    },
+    {
+        "label": "signals",
+        "importPath": "scrapy",
+        "description": "scrapy",
+        "isExtraImport": true,
+        "detail": "scrapy",
+        "documentation": {}
+    },
+    {
+        "label": "HTMLSession",
+        "importPath": "requests_html",
+        "description": "requests_html",
+        "isExtraImport": true,
+        "detail": "requests_html",
+        "documentation": {}
+    },
+    {
+        "label": "HTMLSession",
+        "importPath": "requests_html",
+        "description": "requests_html",
+        "isExtraImport": true,
+        "detail": "requests_html",
+        "documentation": {}
+    },
+    {
+        "label": "is_item",
+        "importPath": "itemadapter",
+        "description": "itemadapter",
+        "isExtraImport": true,
+        "detail": "itemadapter",
+        "documentation": {}
+    },
+    {
+        "label": "ItemAdapter",
+        "importPath": "itemadapter",
+        "description": "itemadapter",
+        "isExtraImport": true,
+        "detail": "itemadapter",
+        "documentation": {}
+    },
+    {
+        "label": "Column",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "DateTime",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "String",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "Integer",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "declarative_base",
+        "importPath": "sqlalchemy.ext.declarative",
+        "description": "sqlalchemy.ext.declarative",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.ext.declarative",
+        "documentation": {}
+    },
+    {
+        "label": "pandas",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pandas",
+        "description": "pandas",
+        "detail": "pandas",
+        "documentation": {}
+    },
+    {
+        "label": "csv",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "csv",
+        "description": "csv",
+        "detail": "csv",
+        "documentation": {}
+    },
+    {
+        "label": "sys",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "sys",
+        "description": "sys",
+        "detail": "sys",
+        "documentation": {}
+    },
+    {
+        "label": "json",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "json",
+        "description": "json",
+        "detail": "json",
+        "documentation": {}
+    },
+    {
+        "label": "argparse",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "argparse",
+        "description": "argparse",
+        "detail": "argparse",
+        "documentation": {}
+    },
+    {
+        "label": "pformat",
+        "importPath": "pprint",
+        "description": "pprint",
+        "isExtraImport": true,
+        "detail": "pprint",
+        "documentation": {}
+    },
+    {
+        "label": "jmespath",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "jmespath",
+        "description": "jmespath",
+        "detail": "jmespath",
+        "documentation": {}
+    },
+    {
+        "label": "exceptions",
+        "importPath": "jmespath",
+        "description": "jmespath",
+        "isExtraImport": true,
+        "detail": "jmespath",
+        "documentation": {}
+    },
+    {
+        "label": "run",
+        "kind": 2,
+        "importPath": "theworldwatch.automation.theworldwatch",
+        "description": "theworldwatch.automation.theworldwatch",
+        "peekOfCode": "def run(playwright: Playwright) -> None:\n    browser = playwright.chromium.launch(headless=False)\n    context = browser.new_context()\n    page = context.new_page()\n    page.goto(\"https://theworldwatch.com/\")\n    page.locator(\"#login\").click()\n    page.get_by_placeholder(\"please enter login here\").click()\n    page.get_by_placeholder(\"please enter login here\").click()\n    page.get_by_placeholder(\"please enter login here\").fill(\"narax38053\")\n    page.get_by_label(\"Password\").click()",
+        "detail": "theworldwatch.automation.theworldwatch",
+        "documentation": {}
+    },
+    {
+        "label": "UsersSpider",
+        "kind": 6,
+        "importPath": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.spiders.UsersSpider",
+        "description": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.spiders.UsersSpider",
+        "peekOfCode": "class UsersSpider(scrapy.Spider):\n    base_url = \"https://theworldwatch.com\"\n    name = \"usersspider\"\n    start_urls = [\n        \"https://theworldwatch.com/latest-updates/1/\",\n    ]\n    # Custom settings for this spider\n    custom_settings = {\n        \"DOWNLOAD_DELAY\": 4,  # Delay of 2 seconds between requests\n        \"CONCURRENT_REQUESTS_PER_DOMAIN\": 1,  # Limit concurrent requests per domain",
+        "detail": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.spiders.UsersSpider",
+        "documentation": {}
+    },
+    {
+        "label": "ScrapyTheworldwatchItem",
+        "kind": 6,
+        "importPath": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.items",
+        "description": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.items",
+        "peekOfCode": "class ScrapyTheworldwatchItem(scrapy.Item):\n    # define the fields for your item here like:\n    # name = scrapy.Field()\n    pass",
+        "detail": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.items",
+        "documentation": {}
+    },
+    {
+        "label": "ScrapyTheworldwatchSpiderMiddleware",
+        "kind": 6,
+        "importPath": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.middlewares",
+        "description": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.middlewares",
+        "peekOfCode": "class ScrapyTheworldwatchSpiderMiddleware:\n    # Not all methods need to be defined. If a method is not defined,\n    # scrapy acts as if the spider middleware does not modify the\n    # passed objects.\n    @classmethod\n    def from_crawler(cls, crawler):\n        # This method is used by Scrapy to create your spiders.\n        s = cls()\n        crawler.signals.connect(s.spider_opened, signal=signals.spider_opened)\n        return s",
+        "detail": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.middlewares",
+        "documentation": {}
+    },
+    {
+        "label": "ScrapyTheworldwatchDownloaderMiddleware",
+        "kind": 6,
+        "importPath": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.middlewares",
+        "description": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.middlewares",
+        "peekOfCode": "class ScrapyTheworldwatchDownloaderMiddleware:\n    # Not all methods need to be defined. If a method is not defined,\n    # scrapy acts as if the downloader middleware does not modify the\n    # passed objects.\n    @classmethod\n    def from_crawler(cls, crawler):\n        # This method is used by Scrapy to create your spiders.\n        s = cls()\n        crawler.signals.connect(s.spider_opened, signal=signals.spider_opened)\n        return s",
+        "detail": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.middlewares",
+        "documentation": {}
+    },
+    {
+        "label": "LastVideo",
+        "kind": 6,
+        "importPath": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.models",
+        "description": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.models",
+        "peekOfCode": "class LastVideo(Base):\n    __tablename__ = \"last_video\"\n    id = Column(Integer, primary_key=True)\n    url = Column(String, unique=True)\nclass User(Base):\n    __tablename__ = \"users\"\n    id = Column(Integer, primary_key=True, autoincrement=True)\n    username = Column(String, unique=True)\n    profile_url = Column(String)\n    last_active = Column(DateTime)",
+        "detail": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.models",
+        "documentation": {}
+    },
+    {
+        "label": "User",
+        "kind": 6,
+        "importPath": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.models",
+        "description": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.models",
+        "peekOfCode": "class User(Base):\n    __tablename__ = \"users\"\n    id = Column(Integer, primary_key=True, autoincrement=True)\n    username = Column(String, unique=True)\n    profile_url = Column(String)\n    last_active = Column(DateTime)",
+        "detail": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.models",
+        "documentation": {}
+    },
+    {
+        "label": "Base",
+        "kind": 5,
+        "importPath": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.models",
+        "description": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.models",
+        "peekOfCode": "Base = declarative_base()\nclass LastVideo(Base):\n    __tablename__ = \"last_video\"\n    id = Column(Integer, primary_key=True)\n    url = Column(String, unique=True)\nclass User(Base):\n    __tablename__ = \"users\"\n    id = Column(Integer, primary_key=True, autoincrement=True)\n    username = Column(String, unique=True)\n    profile_url = Column(String)",
+        "detail": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.models",
+        "documentation": {}
+    },
+    {
+        "label": "UsersPipeline",
+        "kind": 6,
+        "importPath": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.pipelines",
+        "description": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.pipelines",
+        "peekOfCode": "class UsersPipeline(object):\n    def __init__(self):\n        self.csvwriter = None\n    def open_spider(self, spider):\n        self.csvfile = open(\"users.csv\", \"w\", newline=\"\")\n        self.csvwriter = csv.DictWriter(\n            self.csvfile,\n            fieldnames=[\"username\", \"video_title\", \"profile_link\", \"video_url\"],\n        )\n        self.csvwriter.writeheader()",
+        "detail": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.pipelines",
+        "documentation": {}
+    },
+    {
+        "label": "BOT_NAME",
+        "kind": 5,
+        "importPath": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.settings",
+        "description": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.settings",
+        "peekOfCode": "BOT_NAME = \"scrapy_theworldwatch\"\nSPIDER_MODULES = [\"scrapy_theworldwatch.spiders\"]\nNEWSPIDER_MODULE = \"scrapy_theworldwatch.spiders\"\n# Crawl responsibly by identifying yourself (and your website) on the user-agent\n#USER_AGENT = \"scrapy_theworldwatch (+http://www.yourdomain.com)\"\n# Obey robots.txt rules\nROBOTSTXT_OBEY = True\n# Configure maximum concurrent requests performed by Scrapy (default: 16)\n#CONCURRENT_REQUESTS = 32\n# Configure a delay for requests for the same website (default: 0)",
+        "detail": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.settings",
+        "documentation": {}
+    },
+    {
+        "label": "SPIDER_MODULES",
+        "kind": 5,
+        "importPath": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.settings",
+        "description": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.settings",
+        "peekOfCode": "SPIDER_MODULES = [\"scrapy_theworldwatch.spiders\"]\nNEWSPIDER_MODULE = \"scrapy_theworldwatch.spiders\"\n# Crawl responsibly by identifying yourself (and your website) on the user-agent\n#USER_AGENT = \"scrapy_theworldwatch (+http://www.yourdomain.com)\"\n# Obey robots.txt rules\nROBOTSTXT_OBEY = True\n# Configure maximum concurrent requests performed by Scrapy (default: 16)\n#CONCURRENT_REQUESTS = 32\n# Configure a delay for requests for the same website (default: 0)\n# See https://docs.scrapy.org/en/latest/topics/settings.html#download-delay",
+        "detail": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.settings",
+        "documentation": {}
+    },
+    {
+        "label": "NEWSPIDER_MODULE",
+        "kind": 5,
+        "importPath": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.settings",
+        "description": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.settings",
+        "peekOfCode": "NEWSPIDER_MODULE = \"scrapy_theworldwatch.spiders\"\n# Crawl responsibly by identifying yourself (and your website) on the user-agent\n#USER_AGENT = \"scrapy_theworldwatch (+http://www.yourdomain.com)\"\n# Obey robots.txt rules\nROBOTSTXT_OBEY = True\n# Configure maximum concurrent requests performed by Scrapy (default: 16)\n#CONCURRENT_REQUESTS = 32\n# Configure a delay for requests for the same website (default: 0)\n# See https://docs.scrapy.org/en/latest/topics/settings.html#download-delay\n# See also autothrottle settings and docs",
+        "detail": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.settings",
+        "documentation": {}
+    },
+    {
+        "label": "#USER_AGENT",
+        "kind": 5,
+        "importPath": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.settings",
+        "description": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.settings",
+        "peekOfCode": "#USER_AGENT = \"scrapy_theworldwatch (+http://www.yourdomain.com)\"\n# Obey robots.txt rules\nROBOTSTXT_OBEY = True\n# Configure maximum concurrent requests performed by Scrapy (default: 16)\n#CONCURRENT_REQUESTS = 32\n# Configure a delay for requests for the same website (default: 0)\n# See https://docs.scrapy.org/en/latest/topics/settings.html#download-delay\n# See also autothrottle settings and docs\n#DOWNLOAD_DELAY = 3\n# The download delay setting will honor only one of:",
+        "detail": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.settings",
+        "documentation": {}
+    },
+    {
+        "label": "ROBOTSTXT_OBEY",
+        "kind": 5,
+        "importPath": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.settings",
+        "description": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.settings",
+        "peekOfCode": "ROBOTSTXT_OBEY = True\n# Configure maximum concurrent requests performed by Scrapy (default: 16)\n#CONCURRENT_REQUESTS = 32\n# Configure a delay for requests for the same website (default: 0)\n# See https://docs.scrapy.org/en/latest/topics/settings.html#download-delay\n# See also autothrottle settings and docs\n#DOWNLOAD_DELAY = 3\n# The download delay setting will honor only one of:\n#CONCURRENT_REQUESTS_PER_DOMAIN = 16\n#CONCURRENT_REQUESTS_PER_IP = 16",
+        "detail": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.settings",
+        "documentation": {}
+    },
+    {
+        "label": "#CONCURRENT_REQUESTS",
+        "kind": 5,
+        "importPath": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.settings",
+        "description": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.settings",
+        "peekOfCode": "#CONCURRENT_REQUESTS = 32\n# Configure a delay for requests for the same website (default: 0)\n# See https://docs.scrapy.org/en/latest/topics/settings.html#download-delay\n# See also autothrottle settings and docs\n#DOWNLOAD_DELAY = 3\n# The download delay setting will honor only one of:\n#CONCURRENT_REQUESTS_PER_DOMAIN = 16\n#CONCURRENT_REQUESTS_PER_IP = 16\n# Disable cookies (enabled by default)\n#COOKIES_ENABLED = False",
+        "detail": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.settings",
+        "documentation": {}
+    },
+    {
+        "label": "#DOWNLOAD_DELAY",
+        "kind": 5,
+        "importPath": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.settings",
+        "description": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.settings",
+        "peekOfCode": "#DOWNLOAD_DELAY = 3\n# The download delay setting will honor only one of:\n#CONCURRENT_REQUESTS_PER_DOMAIN = 16\n#CONCURRENT_REQUESTS_PER_IP = 16\n# Disable cookies (enabled by default)\n#COOKIES_ENABLED = False\n# Disable Telnet Console (enabled by default)\n#TELNETCONSOLE_ENABLED = False\n# Override the default request headers:\n#DEFAULT_REQUEST_HEADERS = {",
+        "detail": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.settings",
+        "documentation": {}
+    },
+    {
+        "label": "#CONCURRENT_REQUESTS_PER_DOMAIN",
+        "kind": 5,
+        "importPath": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.settings",
+        "description": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.settings",
+        "peekOfCode": "#CONCURRENT_REQUESTS_PER_DOMAIN = 16\n#CONCURRENT_REQUESTS_PER_IP = 16\n# Disable cookies (enabled by default)\n#COOKIES_ENABLED = False\n# Disable Telnet Console (enabled by default)\n#TELNETCONSOLE_ENABLED = False\n# Override the default request headers:\n#DEFAULT_REQUEST_HEADERS = {\n#    \"Accept\": \"text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\",\n#    \"Accept-Language\": \"en\",",
+        "detail": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.settings",
+        "documentation": {}
+    },
+    {
+        "label": "#CONCURRENT_REQUESTS_PER_IP",
+        "kind": 5,
+        "importPath": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.settings",
+        "description": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.settings",
+        "peekOfCode": "#CONCURRENT_REQUESTS_PER_IP = 16\n# Disable cookies (enabled by default)\n#COOKIES_ENABLED = False\n# Disable Telnet Console (enabled by default)\n#TELNETCONSOLE_ENABLED = False\n# Override the default request headers:\n#DEFAULT_REQUEST_HEADERS = {\n#    \"Accept\": \"text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\",\n#    \"Accept-Language\": \"en\",\n#}",
+        "detail": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.settings",
+        "documentation": {}
+    },
+    {
+        "label": "#COOKIES_ENABLED",
+        "kind": 5,
+        "importPath": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.settings",
+        "description": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.settings",
+        "peekOfCode": "#COOKIES_ENABLED = False\n# Disable Telnet Console (enabled by default)\n#TELNETCONSOLE_ENABLED = False\n# Override the default request headers:\n#DEFAULT_REQUEST_HEADERS = {\n#    \"Accept\": \"text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\",\n#    \"Accept-Language\": \"en\",\n#}\n# Enable or disable spider middlewares\n# See https://docs.scrapy.org/en/latest/topics/spider-middleware.html",
+        "detail": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.settings",
+        "documentation": {}
+    },
+    {
+        "label": "#TELNETCONSOLE_ENABLED",
+        "kind": 5,
+        "importPath": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.settings",
+        "description": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.settings",
+        "peekOfCode": "#TELNETCONSOLE_ENABLED = False\n# Override the default request headers:\n#DEFAULT_REQUEST_HEADERS = {\n#    \"Accept\": \"text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\",\n#    \"Accept-Language\": \"en\",\n#}\n# Enable or disable spider middlewares\n# See https://docs.scrapy.org/en/latest/topics/spider-middleware.html\n#SPIDER_MIDDLEWARES = {\n#    \"scrapy_theworldwatch.middlewares.ScrapyTheworldwatchSpiderMiddleware\": 543,",
+        "detail": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.settings",
+        "documentation": {}
+    },
+    {
+        "label": "#DEFAULT_REQUEST_HEADERS",
+        "kind": 5,
+        "importPath": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.settings",
+        "description": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.settings",
+        "peekOfCode": "#DEFAULT_REQUEST_HEADERS = {\n#    \"Accept\": \"text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\",\n#    \"Accept-Language\": \"en\",\n#}\n# Enable or disable spider middlewares\n# See https://docs.scrapy.org/en/latest/topics/spider-middleware.html\n#SPIDER_MIDDLEWARES = {\n#    \"scrapy_theworldwatch.middlewares.ScrapyTheworldwatchSpiderMiddleware\": 543,\n#}\n# Enable or disable downloader middlewares",
+        "detail": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.settings",
+        "documentation": {}
+    },
+    {
+        "label": "#SPIDER_MIDDLEWARES",
+        "kind": 5,
+        "importPath": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.settings",
+        "description": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.settings",
+        "peekOfCode": "#SPIDER_MIDDLEWARES = {\n#    \"scrapy_theworldwatch.middlewares.ScrapyTheworldwatchSpiderMiddleware\": 543,\n#}\n# Enable or disable downloader middlewares\n# See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html\n#DOWNLOADER_MIDDLEWARES = {\n#    \"scrapy_theworldwatch.middlewares.ScrapyTheworldwatchDownloaderMiddleware\": 543,\n#}\n# Enable or disable extensions\n# See https://docs.scrapy.org/en/latest/topics/extensions.html",
+        "detail": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.settings",
+        "documentation": {}
+    },
+    {
+        "label": "#DOWNLOADER_MIDDLEWARES",
+        "kind": 5,
+        "importPath": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.settings",
+        "description": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.settings",
+        "peekOfCode": "#DOWNLOADER_MIDDLEWARES = {\n#    \"scrapy_theworldwatch.middlewares.ScrapyTheworldwatchDownloaderMiddleware\": 543,\n#}\n# Enable or disable extensions\n# See https://docs.scrapy.org/en/latest/topics/extensions.html\n#EXTENSIONS = {\n#    \"scrapy.extensions.telnet.TelnetConsole\": None,\n#}\n# Configure item pipelines\n# See https://docs.scrapy.org/en/latest/topics/item-pipeline.html",
+        "detail": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.settings",
+        "documentation": {}
+    },
+    {
+        "label": "#EXTENSIONS",
+        "kind": 5,
+        "importPath": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.settings",
+        "description": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.settings",
+        "peekOfCode": "#EXTENSIONS = {\n#    \"scrapy.extensions.telnet.TelnetConsole\": None,\n#}\n# Configure item pipelines\n# See https://docs.scrapy.org/en/latest/topics/item-pipeline.html\n#ITEM_PIPELINES = {\n#    \"scrapy_theworldwatch.pipelines.ScrapyTheworldwatchPipeline\": 300,\n#}\n# Enable and configure the AutoThrottle extension (disabled by default)\n# See https://docs.scrapy.org/en/latest/topics/autothrottle.html",
+        "detail": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.settings",
+        "documentation": {}
+    },
+    {
+        "label": "#ITEM_PIPELINES",
+        "kind": 5,
+        "importPath": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.settings",
+        "description": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.settings",
+        "peekOfCode": "#ITEM_PIPELINES = {\n#    \"scrapy_theworldwatch.pipelines.ScrapyTheworldwatchPipeline\": 300,\n#}\n# Enable and configure the AutoThrottle extension (disabled by default)\n# See https://docs.scrapy.org/en/latest/topics/autothrottle.html\n#AUTOTHROTTLE_ENABLED = True\n# The initial download delay\n#AUTOTHROTTLE_START_DELAY = 5\n# The maximum download delay to be set in case of high latencies\n#AUTOTHROTTLE_MAX_DELAY = 60",
+        "detail": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.settings",
+        "documentation": {}
+    },
+    {
+        "label": "#AUTOTHROTTLE_ENABLED",
+        "kind": 5,
+        "importPath": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.settings",
+        "description": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.settings",
+        "peekOfCode": "#AUTOTHROTTLE_ENABLED = True\n# The initial download delay\n#AUTOTHROTTLE_START_DELAY = 5\n# The maximum download delay to be set in case of high latencies\n#AUTOTHROTTLE_MAX_DELAY = 60\n# The average number of requests Scrapy should be sending in parallel to\n# each remote server\n#AUTOTHROTTLE_TARGET_CONCURRENCY = 1.0\n# Enable showing throttling stats for every response received:\n#AUTOTHROTTLE_DEBUG = False",
+        "detail": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.settings",
+        "documentation": {}
+    },
+    {
+        "label": "#AUTOTHROTTLE_START_DELAY",
+        "kind": 5,
+        "importPath": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.settings",
+        "description": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.settings",
+        "peekOfCode": "#AUTOTHROTTLE_START_DELAY = 5\n# The maximum download delay to be set in case of high latencies\n#AUTOTHROTTLE_MAX_DELAY = 60\n# The average number of requests Scrapy should be sending in parallel to\n# each remote server\n#AUTOTHROTTLE_TARGET_CONCURRENCY = 1.0\n# Enable showing throttling stats for every response received:\n#AUTOTHROTTLE_DEBUG = False\n# Enable and configure HTTP caching (disabled by default)\n# See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html#httpcache-middleware-settings",
+        "detail": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.settings",
+        "documentation": {}
+    },
+    {
+        "label": "#AUTOTHROTTLE_MAX_DELAY",
+        "kind": 5,
+        "importPath": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.settings",
+        "description": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.settings",
+        "peekOfCode": "#AUTOTHROTTLE_MAX_DELAY = 60\n# The average number of requests Scrapy should be sending in parallel to\n# each remote server\n#AUTOTHROTTLE_TARGET_CONCURRENCY = 1.0\n# Enable showing throttling stats for every response received:\n#AUTOTHROTTLE_DEBUG = False\n# Enable and configure HTTP caching (disabled by default)\n# See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html#httpcache-middleware-settings\n#HTTPCACHE_ENABLED = True\n#HTTPCACHE_EXPIRATION_SECS = 0",
+        "detail": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.settings",
+        "documentation": {}
+    },
+    {
+        "label": "#AUTOTHROTTLE_TARGET_CONCURRENCY",
+        "kind": 5,
+        "importPath": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.settings",
+        "description": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.settings",
+        "peekOfCode": "#AUTOTHROTTLE_TARGET_CONCURRENCY = 1.0\n# Enable showing throttling stats for every response received:\n#AUTOTHROTTLE_DEBUG = False\n# Enable and configure HTTP caching (disabled by default)\n# See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html#httpcache-middleware-settings\n#HTTPCACHE_ENABLED = True\n#HTTPCACHE_EXPIRATION_SECS = 0\n#HTTPCACHE_DIR = \"httpcache\"\n#HTTPCACHE_IGNORE_HTTP_CODES = []\n#HTTPCACHE_STORAGE = \"scrapy.extensions.httpcache.FilesystemCacheStorage\"",
+        "detail": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.settings",
+        "documentation": {}
+    },
+    {
+        "label": "#AUTOTHROTTLE_DEBUG",
+        "kind": 5,
+        "importPath": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.settings",
+        "description": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.settings",
+        "peekOfCode": "#AUTOTHROTTLE_DEBUG = False\n# Enable and configure HTTP caching (disabled by default)\n# See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html#httpcache-middleware-settings\n#HTTPCACHE_ENABLED = True\n#HTTPCACHE_EXPIRATION_SECS = 0\n#HTTPCACHE_DIR = \"httpcache\"\n#HTTPCACHE_IGNORE_HTTP_CODES = []\n#HTTPCACHE_STORAGE = \"scrapy.extensions.httpcache.FilesystemCacheStorage\"\n# Set settings whose default value is deprecated to a future-proof value\nREQUEST_FINGERPRINTER_IMPLEMENTATION = \"2.7\"",
+        "detail": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.settings",
+        "documentation": {}
+    },
+    {
+        "label": "#HTTPCACHE_ENABLED",
+        "kind": 5,
+        "importPath": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.settings",
+        "description": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.settings",
+        "peekOfCode": "#HTTPCACHE_ENABLED = True\n#HTTPCACHE_EXPIRATION_SECS = 0\n#HTTPCACHE_DIR = \"httpcache\"\n#HTTPCACHE_IGNORE_HTTP_CODES = []\n#HTTPCACHE_STORAGE = \"scrapy.extensions.httpcache.FilesystemCacheStorage\"\n# Set settings whose default value is deprecated to a future-proof value\nREQUEST_FINGERPRINTER_IMPLEMENTATION = \"2.7\"\nTWISTED_REACTOR = \"twisted.internet.asyncioreactor.AsyncioSelectorReactor\"\nFEED_EXPORT_ENCODING = \"utf-8\"",
+        "detail": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.settings",
+        "documentation": {}
+    },
+    {
+        "label": "#HTTPCACHE_EXPIRATION_SECS",
+        "kind": 5,
+        "importPath": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.settings",
+        "description": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.settings",
+        "peekOfCode": "#HTTPCACHE_EXPIRATION_SECS = 0\n#HTTPCACHE_DIR = \"httpcache\"\n#HTTPCACHE_IGNORE_HTTP_CODES = []\n#HTTPCACHE_STORAGE = \"scrapy.extensions.httpcache.FilesystemCacheStorage\"\n# Set settings whose default value is deprecated to a future-proof value\nREQUEST_FINGERPRINTER_IMPLEMENTATION = \"2.7\"\nTWISTED_REACTOR = \"twisted.internet.asyncioreactor.AsyncioSelectorReactor\"\nFEED_EXPORT_ENCODING = \"utf-8\"",
+        "detail": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.settings",
+        "documentation": {}
+    },
+    {
+        "label": "#HTTPCACHE_DIR",
+        "kind": 5,
+        "importPath": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.settings",
+        "description": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.settings",
+        "peekOfCode": "#HTTPCACHE_DIR = \"httpcache\"\n#HTTPCACHE_IGNORE_HTTP_CODES = []\n#HTTPCACHE_STORAGE = \"scrapy.extensions.httpcache.FilesystemCacheStorage\"\n# Set settings whose default value is deprecated to a future-proof value\nREQUEST_FINGERPRINTER_IMPLEMENTATION = \"2.7\"\nTWISTED_REACTOR = \"twisted.internet.asyncioreactor.AsyncioSelectorReactor\"\nFEED_EXPORT_ENCODING = \"utf-8\"",
+        "detail": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.settings",
+        "documentation": {}
+    },
+    {
+        "label": "#HTTPCACHE_IGNORE_HTTP_CODES",
+        "kind": 5,
+        "importPath": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.settings",
+        "description": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.settings",
+        "peekOfCode": "#HTTPCACHE_IGNORE_HTTP_CODES = []\n#HTTPCACHE_STORAGE = \"scrapy.extensions.httpcache.FilesystemCacheStorage\"\n# Set settings whose default value is deprecated to a future-proof value\nREQUEST_FINGERPRINTER_IMPLEMENTATION = \"2.7\"\nTWISTED_REACTOR = \"twisted.internet.asyncioreactor.AsyncioSelectorReactor\"\nFEED_EXPORT_ENCODING = \"utf-8\"",
+        "detail": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.settings",
+        "documentation": {}
+    },
+    {
+        "label": "#HTTPCACHE_STORAGE",
+        "kind": 5,
+        "importPath": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.settings",
+        "description": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.settings",
+        "peekOfCode": "#HTTPCACHE_STORAGE = \"scrapy.extensions.httpcache.FilesystemCacheStorage\"\n# Set settings whose default value is deprecated to a future-proof value\nREQUEST_FINGERPRINTER_IMPLEMENTATION = \"2.7\"\nTWISTED_REACTOR = \"twisted.internet.asyncioreactor.AsyncioSelectorReactor\"\nFEED_EXPORT_ENCODING = \"utf-8\"",
+        "detail": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.settings",
+        "documentation": {}
+    },
+    {
+        "label": "REQUEST_FINGERPRINTER_IMPLEMENTATION",
+        "kind": 5,
+        "importPath": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.settings",
+        "description": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.settings",
+        "peekOfCode": "REQUEST_FINGERPRINTER_IMPLEMENTATION = \"2.7\"\nTWISTED_REACTOR = \"twisted.internet.asyncioreactor.AsyncioSelectorReactor\"\nFEED_EXPORT_ENCODING = \"utf-8\"",
+        "detail": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.settings",
+        "documentation": {}
+    },
+    {
+        "label": "TWISTED_REACTOR",
+        "kind": 5,
+        "importPath": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.settings",
+        "description": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.settings",
+        "peekOfCode": "TWISTED_REACTOR = \"twisted.internet.asyncioreactor.AsyncioSelectorReactor\"\nFEED_EXPORT_ENCODING = \"utf-8\"",
+        "detail": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.settings",
+        "documentation": {}
+    },
+    {
+        "label": "FEED_EXPORT_ENCODING",
+        "kind": 5,
+        "importPath": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.settings",
+        "description": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.settings",
+        "peekOfCode": "FEED_EXPORT_ENCODING = \"utf-8\"",
+        "detail": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.settings",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": "venv.bin.jp",
+        "description": "venv.bin.jp",
+        "peekOfCode": "def main():\n    parser = argparse.ArgumentParser()\n    parser.add_argument('expression')\n    parser.add_argument('-f', '--filename',\n                        help=('The filename containing the input data.  '\n                              'If a filename is not given then data is '\n                              'read from stdin.'))\n    parser.add_argument('--ast', action='store_true',\n                        help=('Pretty print the AST, do not search the data.'))\n    args = parser.parse_args()",
+        "detail": "venv.bin.jp",
+        "documentation": {}
+    },
+    {
+        "label": "last_video_seeder",
+        "kind": 2,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "def last_video_seeder(videos_back=7):\n    session = HTMLSession()\n    parser = session.get(\"https://theworldwatch.com/latest-updates/1/\")\n    return parser.html.find(\".item > a\")[videos_back].attrs[\"href\"]\nprint(last_video_seeder(8))",
+        "detail": "main",
         "documentation": {}
     }
 ]
