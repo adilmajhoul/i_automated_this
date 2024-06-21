@@ -1,13 +1,13 @@
-from requests_html import HTMLSession
-
-# if last_video is empty run this seeder
+import csv
 
 
-def last_video_seeder(videos_back=7):
-    session = HTMLSession()
-    parser = session.get("https://theworldwatch.com/latest-updates/1/")
+def load_users():
+    with open("users.csv", "r") as file:
+        reader = csv.DictReader(file)
 
-    return parser.html.find(".item > a")[videos_back].attrs["href"]
+        return list(reader)
 
 
-print(last_video_seeder(8))
+users = load_users()
+
+print("users: ", users)

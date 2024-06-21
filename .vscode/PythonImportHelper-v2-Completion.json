@@ -42,6 +42,15 @@
         "documentation": {}
     },
     {
+        "label": "csv",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "csv",
+        "description": "csv",
+        "detail": "csv",
+        "documentation": {}
+    },
+    {
         "label": "scrapy",
         "kind": 6,
         "isExtraImport": true,
@@ -56,14 +65,6 @@
         "description": "scrapy",
         "isExtraImport": true,
         "detail": "scrapy",
-        "documentation": {}
-    },
-    {
-        "label": "HTMLSession",
-        "importPath": "requests_html",
-        "description": "requests_html",
-        "isExtraImport": true,
-        "detail": "requests_html",
         "documentation": {}
     },
     {
@@ -140,15 +141,6 @@
         "documentation": {}
     },
     {
-        "label": "csv",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "csv",
-        "description": "csv",
-        "detail": "csv",
-        "documentation": {}
-    },
-    {
         "label": "sys",
         "kind": 6,
         "isExtraImport": true,
@@ -201,11 +193,47 @@
         "documentation": {}
     },
     {
+        "label": "load_users",
+        "kind": 2,
+        "importPath": "theworldwatch.automation.theworldwatch",
+        "description": "theworldwatch.automation.theworldwatch",
+        "peekOfCode": "def load_users():\n    with open(\"users.csv\", \"r\") as file:\n        reader = csv.DictReader(file)\n        return list(reader)\ndef login(page):\n    page.goto(\"https://theworldwatch.com/\")\n    page.locator(\"#login\").click()\n    time.sleep(2)\n    page.get_by_placeholder(\"please enter login here\").click()\n    time.sleep(2)",
+        "detail": "theworldwatch.automation.theworldwatch",
+        "documentation": {}
+    },
+    {
+        "label": "login",
+        "kind": 2,
+        "importPath": "theworldwatch.automation.theworldwatch",
+        "description": "theworldwatch.automation.theworldwatch",
+        "peekOfCode": "def login(page):\n    page.goto(\"https://theworldwatch.com/\")\n    page.locator(\"#login\").click()\n    time.sleep(2)\n    page.get_by_placeholder(\"please enter login here\").click()\n    time.sleep(2)\n    page.get_by_placeholder(\"please enter login here\").fill(\"narax38053\")\n    time.sleep(2)\n    page.get_by_label(\"Password\").click()\n    time.sleep(2)",
+        "detail": "theworldwatch.automation.theworldwatch",
+        "documentation": {}
+    },
+    {
+        "label": "message",
+        "kind": 2,
+        "importPath": "theworldwatch.automation.theworldwatch",
+        "description": "theworldwatch.automation.theworldwatch",
+        "peekOfCode": "def message(page, user):\n    page.goto(user[\"profile_link\"])\n    page.get_by_role(\"link\", name=\"Send Message...\").click()\n    time.sleep(2)\n    page.locator(\"#send_message_message\").nth(1).click()\n    time.sleep(2)\n    page.locator(\"#send_message_message\").nth(1).fill(\n        f\"hi {user['username']} how are you bro ? \"\n    )\n    time.sleep(2)",
+        "detail": "theworldwatch.automation.theworldwatch",
+        "documentation": {}
+    },
+    {
         "label": "run",
         "kind": 2,
         "importPath": "theworldwatch.automation.theworldwatch",
         "description": "theworldwatch.automation.theworldwatch",
-        "peekOfCode": "def run(playwright: Playwright) -> None:\n    browser = playwright.chromium.launch(headless=False)\n    context = browser.new_context()\n    page = context.new_page()\n    page.goto(\"https://theworldwatch.com/\")\n    page.locator(\"#login\").click()\n    page.get_by_placeholder(\"please enter login here\").click()\n    page.get_by_placeholder(\"please enter login here\").click()\n    page.get_by_placeholder(\"please enter login here\").fill(\"narax38053\")\n    page.get_by_label(\"Password\").click()",
+        "peekOfCode": "def run(playwright):\n    users = load_users()\n    browser = playwright.chromium.launch(headless=False)\n    context = browser.new_context()\n    page = context.new_page()\n    login(page)\n    for user in users:\n        message(page, user)\n        time.sleep(5)\n    context.close()",
+        "detail": "theworldwatch.automation.theworldwatch",
+        "documentation": {}
+    },
+    {
+        "label": "users",
+        "kind": 5,
+        "importPath": "theworldwatch.automation.theworldwatch",
+        "description": "theworldwatch.automation.theworldwatch",
+        "peekOfCode": "users = [\n    {\n        \"username\": \"Superb Nipple Man\",\n        \"video_title\": \" You could Never Predict How this Guy is About to Die..(Slow Motion Added) \",\n        \"profile_link\": \"https://theworldwatch.com/members/1324276/\",\n        \"video_url\": \"https://theworldwatch.com/videos/1619618/you-could-never-predict-how-this-guy-is-about-to-die-slow-motion-added/\",\n    },\n    {\n        \"username\": \"LordTorquemada\",\n        \"video_title\": \" You could Never Predict How this Guy is About to Die..(Slow Motion Added) \",",
         "detail": "theworldwatch.automation.theworldwatch",
         "documentation": {}
     },
@@ -552,11 +580,20 @@
         "documentation": {}
     },
     {
-        "label": "last_video_seeder",
+        "label": "load_users",
         "kind": 2,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "def last_video_seeder(videos_back=7):\n    session = HTMLSession()\n    parser = session.get(\"https://theworldwatch.com/latest-updates/1/\")\n    return parser.html.find(\".item > a\")[videos_back].attrs[\"href\"]\nprint(last_video_seeder(8))",
+        "peekOfCode": "def load_users():\n    with open(\"users.csv\", \"r\") as file:\n        reader = csv.DictReader(file)\n        return list(reader)\nusers = load_users()\nprint(\"users: \", users)",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "users",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "users = load_users()\nprint(\"users: \", users)",
         "detail": "main",
         "documentation": {}
     }
