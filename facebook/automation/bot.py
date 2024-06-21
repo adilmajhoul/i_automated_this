@@ -60,6 +60,7 @@ def get_groups(
 def main(playwright):
 
     browser, context = initialize(playwright)
+
     page = context.new_page()
 
     login(page)
