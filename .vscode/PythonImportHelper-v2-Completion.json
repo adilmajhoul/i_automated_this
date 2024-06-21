@@ -42,6 +42,54 @@
         "documentation": {}
     },
     {
+        "label": "Playwright",
+        "importPath": "playwright.sync_api",
+        "description": "playwright.sync_api",
+        "isExtraImport": true,
+        "detail": "playwright.sync_api",
+        "documentation": {}
+    },
+    {
+        "label": "sync_playwright",
+        "importPath": "playwright.sync_api",
+        "description": "playwright.sync_api",
+        "isExtraImport": true,
+        "detail": "playwright.sync_api",
+        "documentation": {}
+    },
+    {
+        "label": "expect",
+        "importPath": "playwright.sync_api",
+        "description": "playwright.sync_api",
+        "isExtraImport": true,
+        "detail": "playwright.sync_api",
+        "documentation": {}
+    },
+    {
+        "label": "Playwright",
+        "importPath": "playwright.sync_api",
+        "description": "playwright.sync_api",
+        "isExtraImport": true,
+        "detail": "playwright.sync_api",
+        "documentation": {}
+    },
+    {
+        "label": "sync_playwright",
+        "importPath": "playwright.sync_api",
+        "description": "playwright.sync_api",
+        "isExtraImport": true,
+        "detail": "playwright.sync_api",
+        "documentation": {}
+    },
+    {
+        "label": "expect",
+        "importPath": "playwright.sync_api",
+        "description": "playwright.sync_api",
+        "isExtraImport": true,
+        "detail": "playwright.sync_api",
+        "documentation": {}
+    },
+    {
         "label": "csv",
         "kind": 6,
         "isExtraImport": true,
@@ -190,6 +238,51 @@
         "description": "jmespath",
         "isExtraImport": true,
         "detail": "jmespath",
+        "documentation": {}
+    },
+    {
+        "label": "initialize",
+        "kind": 2,
+        "importPath": "facebook.automation.bot",
+        "description": "facebook.automation.bot",
+        "peekOfCode": "def initialize(playwright):\n    browser = playwright.chromium.launch(headless=False)\n    context = browser.new_context()\n    return browser, context\ndef login(page):\n    page.goto(\"https://www.facebook.com/\")\n    time.sleep(2)\n    page.get_by_test_id(\"royal_email\").click()\n    time.sleep(2)\n    page.get_by_test_id(\"royal_email\").fill(\"0688109956\")",
+        "detail": "facebook.automation.bot",
+        "documentation": {}
+    },
+    {
+        "label": "login",
+        "kind": 2,
+        "importPath": "facebook.automation.bot",
+        "description": "facebook.automation.bot",
+        "peekOfCode": "def login(page):\n    page.goto(\"https://www.facebook.com/\")\n    time.sleep(2)\n    page.get_by_test_id(\"royal_email\").click()\n    time.sleep(2)\n    page.get_by_test_id(\"royal_email\").fill(\"0688109956\")\n    time.sleep(2)\n    page.get_by_test_id(\"royal_pass\").click()\n    time.sleep(2)\n    page.get_by_test_id(\"royal_pass\").fill(\"facebookskhon\")",
+        "detail": "facebook.automation.bot",
+        "documentation": {}
+    },
+    {
+        "label": "get_last_posts",
+        "kind": 2,
+        "importPath": "facebook.automation.bot",
+        "description": "facebook.automation.bot",
+        "peekOfCode": "def get_last_posts(page, group_url, number_of_posts=1):\n    page.goto(group_url)\n    time.sleep(5)  # Wait for page to load\n    posts = page.query_selector_all(\n        \"div.html-div > span.x4k7w5x.x1h91t0o > a.x1i10hfl.xjbqb8w\"\n    )\n    return [post.href for post in posts[:number_of_posts]]\ndef get_groups(\n    page,\n    groups_url=\"https://www.facebook.com/groups/joins/?nav_source=tab\",",
+        "detail": "facebook.automation.bot",
+        "documentation": {}
+    },
+    {
+        "label": "get_groups",
+        "kind": 2,
+        "importPath": "facebook.automation.bot",
+        "description": "facebook.automation.bot",
+        "peekOfCode": "def get_groups(\n    page,\n    groups_url=\"https://www.facebook.com/groups/joins/?nav_source=tab\",\n    number_of_groups=3,\n):\n    page.goto(groups_url)\n    time.sleep(5)  # Wait for page to load\n    groups = page.query_selector_all('div.x8gbvx8.x78zum5 > div[role=\"listitem\"]')\n    return [group.href for group in groups[:number_of_groups]]\ndef main(playwright):",
+        "detail": "facebook.automation.bot",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": "facebook.automation.bot",
+        "description": "facebook.automation.bot",
+        "peekOfCode": "def main(playwright):\n    browser, context = initialize(playwright)\n    page = context.new_page()\n    login(page)\n    # get_groups(page,groups_url='https://www.facebook.com/groups/feed/')\n    # get_last_posts(page,group_url,number_of_posts=5)\n    {\n        # comment on posts\n        # like posts\n        # share posts",
+        "detail": "facebook.automation.bot",
         "documentation": {}
     },
     {
@@ -580,20 +673,11 @@
         "documentation": {}
     },
     {
-        "label": "load_users",
+        "label": "run",
         "kind": 2,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "def load_users():\n    with open(\"users.csv\", \"r\") as file:\n        reader = csv.DictReader(file)\n        return list(reader)\nusers = load_users()\nprint(\"users: \", users)",
-        "detail": "main",
-        "documentation": {}
-    },
-    {
-        "label": "users",
-        "kind": 5,
-        "importPath": "main",
-        "description": "main",
-        "peekOfCode": "users = load_users()\nprint(\"users: \", users)",
+        "peekOfCode": "def run(playwright: Playwright) -> None:\n    browser = playwright.chromium.launch(headless=False)\n    context = browser.new_context()\n    page = context.new_page()\n    page.goto(\"https://www.facebook.com/\")\n    time.sleep(2)\n    page.get_by_test_id(\"royal_email\").click()\n    time.sleep(2)\n    page.get_by_test_id(\"royal_email\").fill(\"0688109956\")\n    time.sleep(2)",
         "detail": "main",
         "documentation": {}
     }
