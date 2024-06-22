@@ -18,6 +18,14 @@
         "documentation": {}
     },
     {
+        "label": "goto",
+        "importPath": "turtle",
+        "description": "turtle",
+        "isExtraImport": true,
+        "detail": "turtle",
+        "documentation": {}
+    },
+    {
         "label": "Playwright",
         "importPath": "playwright.sync_api",
         "description": "playwright.sync_api",
@@ -259,20 +267,38 @@
         "documentation": {}
     },
     {
-        "label": "get_last_posts",
-        "kind": 2,
-        "importPath": "facebook.automation.bot",
-        "description": "facebook.automation.bot",
-        "peekOfCode": "def get_last_posts(page, group_url, number_of_posts=1):\n    page.goto(group_url)\n    time.sleep(5)  # Wait for page to load\n    posts = page.query_selector_all(\n        \"div.html-div > span.x4k7w5x.x1h91t0o > a.x1i10hfl.xjbqb8w\"\n    )\n    return [post.href for post in posts[:number_of_posts]]\ndef get_groups(\n    page,\n    groups_url=\"https://www.facebook.com/groups/joins/?nav_source=tab\",",
-        "detail": "facebook.automation.bot",
-        "documentation": {}
-    },
-    {
         "label": "get_groups",
         "kind": 2,
         "importPath": "facebook.automation.bot",
         "description": "facebook.automation.bot",
-        "peekOfCode": "def get_groups(\n    page,\n    groups_url=\"https://www.facebook.com/groups/joins/?nav_source=tab\",\n    number_of_groups=3,\n):\n    page.goto(groups_url)\n    time.sleep(5)  # Wait for page to load\n    groups = page.query_selector_all('div.x8gbvx8.x78zum5 > div[role=\"listitem\"]')\n    return [group.href for group in groups[:number_of_groups]]\ndef main(playwright):",
+        "peekOfCode": "def get_groups(\n    page,\n    groups_url=\"https://www.facebook.com/groups/joins/?nav_source=tab\",\n    number_of_groups=3,\n):\n    page.goto(groups_url)\n    time.sleep(5)  # Wait for page to load\n    groups = page.query_selector_all('div.x8gbvx8.x78zum5 > div[role=\"listitem\"]')\n    return [group.href for group in groups[:number_of_groups]]\ndef get_last_posts(page, group_url, number_of_posts=1):",
+        "detail": "facebook.automation.bot",
+        "documentation": {}
+    },
+    {
+        "label": "get_last_posts",
+        "kind": 2,
+        "importPath": "facebook.automation.bot",
+        "description": "facebook.automation.bot",
+        "peekOfCode": "def get_last_posts(page, group_url, number_of_posts=1):\n    page.goto(group_url)\n    time.sleep(5)  # Wait for page to load\n    posts = page.query_selector_all(\n        \"div.html-div > span.x4k7w5x.x1h91t0o > a.x1i10hfl.xjbqb8w\"\n    )\n    return [post.href for post in posts[:number_of_posts]]\n# -----------------------\ndef generate_comment(post_content):\n    openai.api_key = \"YOUR_OPENAI_API_KEY\"",
+        "detail": "facebook.automation.bot",
+        "documentation": {}
+    },
+    {
+        "label": "generate_comment",
+        "kind": 2,
+        "importPath": "facebook.automation.bot",
+        "description": "facebook.automation.bot",
+        "peekOfCode": "def generate_comment(post_content):\n    openai.api_key = \"YOUR_OPENAI_API_KEY\"\n    response = openai.Completion.create(\n        engine=\"text-davinci-003\",\n        prompt=f\"Generate a thoughtful comment for the following Facebook post:\\n\\n{post_content}\",\n        max_tokens=50,\n    )\n    return response.choices[0].text.strip()\ndef post_comment(page, post, comment):\n    page.goto(post)",
+        "detail": "facebook.automation.bot",
+        "documentation": {}
+    },
+    {
+        "label": "post_comment",
+        "kind": 2,
+        "importPath": "facebook.automation.bot",
+        "description": "facebook.automation.bot",
+        "peekOfCode": "def post_comment(page, post, comment):\n    page.goto(post)\n    post_content = page.query_selector(\"div[aria-label='Write a comment']\").text_content\n    generate_comment(post_content)\n    post.click()  # Click to expand the post\n    time.sleep(2)\n    page.fill(\"div[aria-label='Write a comment']\", comment)\n    page.press(\"div[aria-label='Write a comment']\", \"Enter\")\n    time.sleep(2)  # Wait for comment to post\ndef main(email='', password='', playwright):",
         "detail": "facebook.automation.bot",
         "documentation": {}
     },
@@ -281,7 +307,7 @@
         "kind": 2,
         "importPath": "facebook.automation.bot",
         "description": "facebook.automation.bot",
-        "peekOfCode": "def main(playwright):\n    browser, context = initialize(playwright)\n    page = context.new_page()\n    login(page)\n    # get_groups(page,groups_url='https://www.facebook.com/groups/feed/')\n    # get_last_posts(page,group_url,number_of_posts=5)\n    {\n        # comment on posts\n        # like posts\n        # share posts",
+        "peekOfCode": "def main(email='', password='', playwright):\n    browser, context = initialize(playwright)\n    page = context.new_page()\n    login(page)\n    time.sleep(10)\n    groups = get_groups(page)\n    time.sleep(10)\n    for group in groups:\n        posts = get_last_posts(page, group)\n        time.sleep(10)",
         "detail": "facebook.automation.bot",
         "documentation": {}
     },

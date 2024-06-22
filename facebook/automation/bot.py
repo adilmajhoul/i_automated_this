@@ -1,5 +1,6 @@
 import re
 import time
+from turtle import goto
 from playwright.sync_api import Playwright, sync_playwright, expect
 
 
@@ -31,18 +32,7 @@ def login(page):
     page.get_by_test_id("royal_login_button").click()
     time.sleep(2)
 
-    time.sleep(10)
-
     # ---------------------
-
-
-def get_last_posts(page, group_url, number_of_posts=1):
-    page.goto(group_url)
-    time.sleep(5)  # Wait for page to load
-    posts = page.query_selector_all(
-        "div.html-div > span.x4k7w5x.x1h91t0o > a.x1i10hfl.xjbqb8w"
-    )
-    return [post.href for post in posts[:number_of_posts]]
 
 
 def get_groups(
@@ -57,13 +47,61 @@ def get_groups(
     return [group.href for group in groups[:number_of_groups]]
 
 
-def main(playwright):
+def get_last_posts(page, group_url, number_of_posts=1):
+    page.goto(group_url)
+    time.sleep(5)  # Wait for page to load
+    posts = page.query_selector_all(
+        "div.html-div > span.x4k7w5x.x1h91t0o > a.x1i10hfl.xjbqb8w"
+    )
+    return [post.href for post in posts[:number_of_posts]]
+
+
+# -----------------------
+def generate_comment(post_content):
+    openai.api_key = "YOUR_OPENAI_API_KEY"
+    response = openai.Completion.create(
+        engine="text-davinci-003",
+        prompt=f"Generate a thoughtful comment for the following Facebook post:\n\n{post_content}",
+        max_tokens=50,
+    )
+    return response.choices[0].text.strip()
+
+
+def post_comment(page, post, comment):
+    
+    page.goto(post)
+    
+    post_content = page.query_selector("div[aria-label='Write a comment']").text_content
+    
+    generate_comment(post_content)
+    
+    post.click()  # Click to expand the post
+    time.sleep(2)
+    page.fill("div[aria-label='Write a comment']", comment)
+    page.press("div[aria-label='Write a comment']", "Enter")
+    time.sleep(2)  # Wait for comment to post
+
+
+def main(email='', password='', playwright):
 
     browser, context = initialize(playwright)
 
     page = context.new_page()
 
     login(page)
+    time.sleep(10)
+
+    groups = get_groups(page)
+    time.sleep(10)
+    
+    for group in groups:
+        posts = get_last_posts(page, group)
+        time.sleep(10)
+        
+        for post in posts:
+            
+            post_comment(page, post, "hello")
+            time.sleep(10)
 
     # get_groups(page,groups_url='https://www.facebook.com/groups/feed/')
 
