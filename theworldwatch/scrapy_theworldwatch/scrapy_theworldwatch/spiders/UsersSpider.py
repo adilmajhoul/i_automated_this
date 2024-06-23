@@ -22,6 +22,7 @@ class UsersSpider(scrapy.Spider):
 
     def __init__(self, *args, **kwargs):
         super(UsersSpider, self).__init__(*args, **kwargs)
+
         self.last_video_url = self.read_last_video_url()
         print("__________self.last_video_url: ", self.last_video_url)
         self.last_video_reached = False
