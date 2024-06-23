@@ -253,7 +253,7 @@
         "kind": 2,
         "importPath": "facebook.automation.bot",
         "description": "facebook.automation.bot",
-        "peekOfCode": "def initialize(playwright):\n    browser = playwright.chromium.launch(headless=False)\n    context = browser.new_context()\n    return browser, context\ndef login(page):\n    page.goto(\"https://www.facebook.com/\")\n    time.sleep(2)\n    page.get_by_test_id(\"royal_email\").click()\n    time.sleep(2)\n    page.get_by_test_id(\"royal_email\").fill(\"0688109956\")",
+        "peekOfCode": "def initialize(playwright):\n    browser = playwright.chromium.launch(headless=False)\n    context = browser.new_context()\n    return browser, context\ndef login(page):\n    page.goto(\"https://www.facebook.com/\")\n    time.sleep(2)\n    page.get_by_test_id(\"royal_email\").click()\n    time.sleep(2)\n    page.get_by_test_id(\"royal_email\").fill(\"oliagems@proton.me\")",
         "detail": "facebook.automation.bot",
         "documentation": {}
     },
@@ -262,7 +262,7 @@
         "kind": 2,
         "importPath": "facebook.automation.bot",
         "description": "facebook.automation.bot",
-        "peekOfCode": "def login(page):\n    page.goto(\"https://www.facebook.com/\")\n    time.sleep(2)\n    page.get_by_test_id(\"royal_email\").click()\n    time.sleep(2)\n    page.get_by_test_id(\"royal_email\").fill(\"0688109956\")\n    time.sleep(2)\n    page.get_by_test_id(\"royal_pass\").click()\n    time.sleep(2)\n    page.get_by_test_id(\"royal_pass\").fill(\"facebookskhon\")",
+        "peekOfCode": "def login(page):\n    page.goto(\"https://www.facebook.com/\")\n    time.sleep(2)\n    page.get_by_test_id(\"royal_email\").click()\n    time.sleep(2)\n    page.get_by_test_id(\"royal_email\").fill(\"oliagems@proton.me\")\n    time.sleep(2)\n    page.get_by_test_id(\"royal_pass\").click()\n    time.sleep(2)\n    page.get_by_test_id(\"royal_pass\").fill(\"facebookskhon1-\")",
         "detail": "facebook.automation.bot",
         "documentation": {}
     },
@@ -271,34 +271,7 @@
         "kind": 2,
         "importPath": "facebook.automation.bot",
         "description": "facebook.automation.bot",
-        "peekOfCode": "def get_groups(\n    page,\n    groups_url=\"https://www.facebook.com/groups/joins/?nav_source=tab\",\n    number_of_groups=3,\n):\n    page.goto(groups_url)\n    time.sleep(5)  # Wait for page to load\n    groups = page.query_selector_all('div.x8gbvx8.x78zum5 > div[role=\"listitem\"]')\n    return [group.href for group in groups[:number_of_groups]]\ndef get_last_posts(page, group_url, number_of_posts=1):",
-        "detail": "facebook.automation.bot",
-        "documentation": {}
-    },
-    {
-        "label": "get_last_posts",
-        "kind": 2,
-        "importPath": "facebook.automation.bot",
-        "description": "facebook.automation.bot",
-        "peekOfCode": "def get_last_posts(page, group_url, number_of_posts=1):\n    page.goto(group_url)\n    time.sleep(5)  # Wait for page to load\n    posts = page.query_selector_all(\n        \"div.html-div > span.x4k7w5x.x1h91t0o > a.x1i10hfl.xjbqb8w\"\n    )\n    return [post.href for post in posts[:number_of_posts]]\n# -----------------------\ndef generate_comment(post_content):\n    openai.api_key = \"YOUR_OPENAI_API_KEY\"",
-        "detail": "facebook.automation.bot",
-        "documentation": {}
-    },
-    {
-        "label": "generate_comment",
-        "kind": 2,
-        "importPath": "facebook.automation.bot",
-        "description": "facebook.automation.bot",
-        "peekOfCode": "def generate_comment(post_content):\n    openai.api_key = \"YOUR_OPENAI_API_KEY\"\n    response = openai.Completion.create(\n        engine=\"text-davinci-003\",\n        prompt=f\"Generate a thoughtful comment for the following Facebook post:\\n\\n{post_content}\",\n        max_tokens=50,\n    )\n    return response.choices[0].text.strip()\ndef post_comment(page, post, comment):\n    page.goto(post)",
-        "detail": "facebook.automation.bot",
-        "documentation": {}
-    },
-    {
-        "label": "post_comment",
-        "kind": 2,
-        "importPath": "facebook.automation.bot",
-        "description": "facebook.automation.bot",
-        "peekOfCode": "def post_comment(page, post, comment):\n    page.goto(post)\n    post_content = page.query_selector(\"div[aria-label='Write a comment']\").text_content\n    generate_comment(post_content)\n    post.click()  # Click to expand the post\n    time.sleep(2)\n    page.fill(\"div[aria-label='Write a comment']\", comment)\n    page.press(\"div[aria-label='Write a comment']\", \"Enter\")\n    time.sleep(2)  # Wait for comment to post\ndef main(email='', password='', playwright):",
+        "peekOfCode": "def get_groups(\n    page,\n    groups_url=\"https://www.facebook.com/groups/joins/?nav_source=tab\",\n    number_of_groups=3,\n):\n    page.goto(groups_url)\n    time.sleep(5)\n    groups = page.query_selector_all(\n        \"div:nth-child(2) > div.x8gbvx8.x78zum5.x1q0g3np.x1a02dak.x1nhvcw1.x1rdy4ex.xcud41i.x4vbgl9.x139jcc6 > div > div > div.x6s0dn4.x78zum5.x1q0g3np.x1qughib > div.x1cy8zhl.x78zum5.xdt5ytf.x1iyjqo2.x1a02dak.x1sy10c2.x1pi30zi > div > div > span > span > div > a\"\n    )",
         "detail": "facebook.automation.bot",
         "documentation": {}
     },
@@ -307,7 +280,7 @@
         "kind": 2,
         "importPath": "facebook.automation.bot",
         "description": "facebook.automation.bot",
-        "peekOfCode": "def main(email='', password='', playwright):\n    browser, context = initialize(playwright)\n    page = context.new_page()\n    login(page)\n    time.sleep(10)\n    groups = get_groups(page)\n    time.sleep(10)\n    for group in groups:\n        posts = get_last_posts(page, group)\n        time.sleep(10)",
+        "peekOfCode": "def main(playwright, email=\"\", password=\"\"):\n    browser, context = initialize(playwright)\n    page = context.new_page()\n    login(page)\n    time.sleep(10)\n    groups = get_groups(page)\n    print(\"groups: \", groups)\n    time.sleep(120)\n    # for group in groups:\n    #     posts = get_last_posts(page, group)",
         "detail": "facebook.automation.bot",
         "documentation": {}
     },
