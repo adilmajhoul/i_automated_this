@@ -276,11 +276,65 @@
         "documentation": {}
     },
     {
+        "label": "get_last_posts",
+        "kind": 2,
+        "importPath": "facebook.automation.bot",
+        "description": "facebook.automation.bot",
+        "peekOfCode": "def get_last_posts(page, group_url, number_of_posts=3):\n    page.goto(group_url)\n    time.sleep(5)\n    # posts = page.query_selector_all(\n    #     \"div.html-div > span.x4k7w5x.x1h91t0o > a.x1i10hfl.xjbqb8w\"\n    # )\n    # return [post.href for post in posts[:number_of_posts]]\n    # Get all the selectors\n    page.keyboard.press(\"End\")\n    time.sleep(10)",
+        "detail": "facebook.automation.bot",
+        "documentation": {}
+    },
+    {
+        "label": "comment",
+        "kind": 2,
+        "importPath": "facebook.automation.bot",
+        "description": "facebook.automation.bot",
+        "peekOfCode": "def comment(page, post, comment):\n    pass\ndef like(page, post):\n    pass\ndef share(page, post):\n    pass\ndef love_comment(page, post):\n    pass\ndef add_friend(page, post):\n    pass",
+        "detail": "facebook.automation.bot",
+        "documentation": {}
+    },
+    {
+        "label": "like",
+        "kind": 2,
+        "importPath": "facebook.automation.bot",
+        "description": "facebook.automation.bot",
+        "peekOfCode": "def like(page, post):\n    pass\ndef share(page, post):\n    pass\ndef love_comment(page, post):\n    pass\ndef add_friend(page, post):\n    pass\n# page.get_by_role(\"paragraph\").click()\n# page.get_by_label(\"Write a public comment…\").fill(\"that looks delicious\")",
+        "detail": "facebook.automation.bot",
+        "documentation": {}
+    },
+    {
+        "label": "share",
+        "kind": 2,
+        "importPath": "facebook.automation.bot",
+        "description": "facebook.automation.bot",
+        "peekOfCode": "def share(page, post):\n    pass\ndef love_comment(page, post):\n    pass\ndef add_friend(page, post):\n    pass\n# page.get_by_role(\"paragraph\").click()\n# page.get_by_label(\"Write a public comment…\").fill(\"that looks delicious\")\n# page.get_by_label(\"Comment\", exact=True).click()\n# page.get_by_label(\"Like\").nth(1).click()",
+        "detail": "facebook.automation.bot",
+        "documentation": {}
+    },
+    {
+        "label": "love_comment",
+        "kind": 2,
+        "importPath": "facebook.automation.bot",
+        "description": "facebook.automation.bot",
+        "peekOfCode": "def love_comment(page, post):\n    pass\ndef add_friend(page, post):\n    pass\n# page.get_by_role(\"paragraph\").click()\n# page.get_by_label(\"Write a public comment…\").fill(\"that looks delicious\")\n# page.get_by_label(\"Comment\", exact=True).click()\n# page.get_by_label(\"Like\").nth(1).click()\n# page.get_by_label(\"Send this to friends or post\").click()\n# page.get_by_role(\"button\", name=\"Share to Feed\").click()",
+        "detail": "facebook.automation.bot",
+        "documentation": {}
+    },
+    {
+        "label": "add_friend",
+        "kind": 2,
+        "importPath": "facebook.automation.bot",
+        "description": "facebook.automation.bot",
+        "peekOfCode": "def add_friend(page, post):\n    pass\n# page.get_by_role(\"paragraph\").click()\n# page.get_by_label(\"Write a public comment…\").fill(\"that looks delicious\")\n# page.get_by_label(\"Comment\", exact=True).click()\n# page.get_by_label(\"Like\").nth(1).click()\n# page.get_by_label(\"Send this to friends or post\").click()\n# page.get_by_role(\"button\", name=\"Share to Feed\").click()\n# page.get_by_role(\"button\", name=\"Share\").click()\n# page.get_by_label(\"Love\", exact=True).click(position={\"x\":17,\"y\":26})",
+        "detail": "facebook.automation.bot",
+        "documentation": {}
+    },
+    {
         "label": "main",
         "kind": 2,
         "importPath": "facebook.automation.bot",
         "description": "facebook.automation.bot",
-        "peekOfCode": "def main(playwright, email=\"\", password=\"\"):\n    browser, context = initialize(playwright)\n    page = context.new_page()\n    login(page)\n    time.sleep(10)\n    groups = get_groups(page)\n    print(\"groups: \", groups)\n    time.sleep(120)\n    # for group in groups:\n    #     posts = get_last_posts(page, group)",
+        "peekOfCode": "def main(playwright, email=\"\", password=\"\"):\n    browser, context = initialize(playwright)\n    page = context.new_page()\n    login(page)\n    time.sleep(10)\n    # groups = get_groups(page)\n    # print(\"groups: \", groups)\n    posts = get_last_posts(\n        page,\n        \"https://www.facebook.com/groups/378731377493517/?sorting_setting=RECENT_ACTIVITY\",",
         "detail": "facebook.automation.bot",
         "documentation": {}
     },
