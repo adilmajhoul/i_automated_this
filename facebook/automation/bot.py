@@ -1,7 +1,6 @@
-import re
+from enum import Enum
 import time
-from turtle import goto
-from playwright.sync_api import Playwright, sync_playwright, expect
+from playwright.sync_api import sync_playwright
 
 
 def initialize(playwright):
@@ -85,10 +84,6 @@ def comment(page, post, comment):
     pass
 
 
-def like(page, post):
-    pass
-
-
 def share(page, post):
     pass
 
@@ -108,7 +103,7 @@ def add_friend(page, post):
     page.get_by_label("Care").click(position={"x": 12, "y": 19})
 
 
-# def post_comment_US(page, post, comment):
+# def comment_US(page, post, comment):
 
 #     page.goto(post)
 #     time.sleep(10)
@@ -123,34 +118,113 @@ def add_friend(page, post):
 #     time.sleep(3)
 
 
-def post_comment(page, post, comment):
+# def like(page, post):
+#     page.goto(post)
+#     time.sleep(10)
 
+#     page.get_by_label("Like").first.click()
+#     time.sleep(3)
+
+
+# def love(page, post):
+#     page.goto(post)
+#     time.sleep(10)
+
+#     page.get_by_label("Like").first.hover()
+#     time.sleep(5)
+
+#     page.get_by_label("Love").click(position={"x": 17, "y": 21})
+#     time.sleep(3)
+
+
+# def care(page, post):
+#     page.goto(post)
+#     time.sleep(10)
+
+#     page.get_by_label("Like").first.hover()
+#     time.sleep(5)
+
+#     page.get_by_label("Care").click(position={"x": 17, "y": 19})
+#     time.sleep(3)
+
+
+# def haha(page, post):
+#     page.goto(post)
+#     time.sleep(10)
+
+#     page.get_by_label("Like").first.hover()
+#     time.sleep(5)
+
+#     page.get_by_label("Haha", exact=True).click(position={"x": 16, "y": 21})
+#     time.sleep(3)
+
+
+def comment(page, post, comment, additional_actions=[]):
+    # Navigate to the post page only if it wasn't loaded before
     page.goto(post)
     time.sleep(10)
 
-    page.get_by_label("Answer as Adil Ahmed").click()
+    page.get_by_label("Leave a comment").click()
+    time.sleep(5)
+
+    page.get_by_role("paragraph").fill(comment)
     time.sleep(3)
 
-    page.get_by_label("Answer as Adil Ahmed").fill(comment)
-    time.sleep(3)
-
-    # page.get_by_label("Comment", exact=True).click()
     page.keyboard.press("Enter")
     time.sleep(3)
 
+    for action in additional_actions:
+        if isinstance(action, tuple):
+            func, *args = action
+            func(page, post, skip_navigation=True, *args)
+            time.sleep(5)
 
-# # -----------------------
-# def generate_comment(post_content):
-#     openai.api_key = "YOUR_OPENAI_API_KEY"
-#     response = openai.Completion.create(
-#         engine="text-davinci-003",
-#         prompt=f"Generate a thoughtful comment for the following Facebook post:\n\n{post_content}",
-#         max_tokens=50,
-#     )
-#     return response.choices[0].text.strip()
+        else:
+            action(page, post, skip_navigation=True)
+            time.sleep(5)
+
+
+class Reaction(Enum):
+    LIKE = "Like"
+    LOVE = "Love"
+    CARE = "Care"
+    HAHA = "Haha"
+    WOW = "Wow"
+    SAD = "Sad"
+    ANGRY = "Angry"
+
+
+def react(page, post, reaction: Reaction, skip_navigation=False):
+    if not skip_navigation:
+        page.goto(post)
+        time.sleep(10)
+
+    page.get_by_label("Like").first.hover()
+    time.sleep(5)
+
+    page.get_by_label(reaction.value).click(position={"x": 17, "y": 21})
+    time.sleep(3)
+
+
+def share(page, post, skip_navigation=False):
+    if not skip_navigation:
+        page.goto(post)
+        time.sleep(10)
+
+    page.get_by_label("Send this to friends or post").click()
+    time.sleep(3)
+
+    page.get_by_label("Share now").click()
+    time.sleep(3)
 
 
 def main(playwright, email="", password=""):
+
+    # page.get_by_label("Wow").click(position={"x":16,"y":22})
+    # page.get_by_label("Sad").click(position={"x":19,"y":20})
+    # page.get_by_label("Angry").click(position={"x":17,"y":21})
+    # page.get_by_label("Leave a comment").click()
+    # page.get_by_label("Comment as Adil Ahmed").fill("wtf hhhhh")
 
     browser, context = initialize(playwright)
 
@@ -168,11 +242,37 @@ def main(playwright, email="", password=""):
     # )
     # print("posts: ", posts)
 
-    posts = ["https://www.facebook.com/groups/6128462463877370/posts/7964976430225955/"]
+    posts = ["https://www.facebook.com/groups/412570174716840/posts/487007983939725/"]
 
-    for post in posts:
-        post_comment(page, post, "si mhdi t9wdat 3lih hhhhhh")
-        time.sleep(10)
+    for index, post in enumerate(posts):
+
+        match index:
+            case 0:
+                comment(
+                    page,
+                    post,
+                    "so true",
+                    additional_actions=[(react, Reaction.LIKE), share],
+                )
+
+                # get users from post
+                # send friend requests
+
+                time.sleep(100)
+
+            # case 2:
+            # react(page, post, Reaction.HAHA)
+            # comment share
+            # time.sleep(10)
+            # case 3:
+            # react(page, post, Reaction.HAHA)
+            # comment
+            # share
+            # add 5 friends from post
+            # time.sleep(10)
+
+            case _:
+                pass
 
     time.sleep(120)
 
@@ -182,7 +282,7 @@ def main(playwright, email="", password=""):
 
     #     for post in posts:
 
-    #         post_comment(page, post, "hello")
+    #         comment(page, post, "hello")
     #         time.sleep(10)
 
     # get_groups(page,groups_url='https://www.facebook.com/groups/feed/')
