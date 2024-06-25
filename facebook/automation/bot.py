@@ -221,6 +221,7 @@ def share(page, post, skip_navigation=False):
 def main(playwright, email="", password=""):
 
     # page.get_by_label("Wow").click(position={"x":16,"y":22})
+
     # page.get_by_label("Sad").click(position={"x":19,"y":20})
     # page.get_by_label("Angry").click(position={"x":17,"y":21})
     # page.get_by_label("Leave a comment").click()
