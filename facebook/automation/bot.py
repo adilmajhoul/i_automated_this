@@ -251,8 +251,8 @@ def main(playwright, email="", password=""):
                 comment(
                     page,
                     post,
-                    "so true",
-                    additional_actions=[(react, Reaction.LIKE), share],
+                    "in python i use match instead of elif",
+                    additional_actions=[(react, Reaction.HAHA), share],
                 )
 
                 # get users from post
