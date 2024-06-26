@@ -1,4 +1,5 @@
 from enum import Enum
+import random
 import time
 from playwright.sync_api import sync_playwright
 
@@ -80,29 +81,6 @@ def get_last_posts(page, group_url, number_of_posts=3):
     return links
 
 
-def comment(page, post, comment):
-    pass
-
-
-def share(page, post):
-    pass
-
-
-def love_comment(page, post):
-    pass
-
-
-def add_friend(page, post):
-    pass
-
-    page.get_by_label("Like").nth(1).click()
-    page.get_by_label("Send this to friends or post").click()
-    page.get_by_role("button", name="Share to Feed").click()
-    page.get_by_role("button", name="Share").click()
-    page.get_by_label("Love", exact=True).click(position={"x": 17, "y": 26})
-    page.get_by_label("Care").click(position={"x": 12, "y": 19})
-
-
 # def comment_US(page, post, comment):
 
 #     page.goto(post)
@@ -115,47 +93,6 @@ def add_friend(page, post):
 #     time.sleep(3)
 
 #     page.get_by_label("Comment", exact=True).click()
-#     time.sleep(3)
-
-
-# def like(page, post):
-#     page.goto(post)
-#     time.sleep(10)
-
-#     page.get_by_label("Like").first.click()
-#     time.sleep(3)
-
-
-# def love(page, post):
-#     page.goto(post)
-#     time.sleep(10)
-
-#     page.get_by_label("Like").first.hover()
-#     time.sleep(5)
-
-#     page.get_by_label("Love").click(position={"x": 17, "y": 21})
-#     time.sleep(3)
-
-
-# def care(page, post):
-#     page.goto(post)
-#     time.sleep(10)
-
-#     page.get_by_label("Like").first.hover()
-#     time.sleep(5)
-
-#     page.get_by_label("Care").click(position={"x": 17, "y": 19})
-#     time.sleep(3)
-
-
-# def haha(page, post):
-#     page.goto(post)
-#     time.sleep(10)
-
-#     page.get_by_label("Like").first.hover()
-#     time.sleep(5)
-
-#     page.get_by_label("Haha", exact=True).click(position={"x": 16, "y": 21})
 #     time.sleep(3)
 
 
@@ -218,6 +155,38 @@ def share(page, post, skip_navigation=False):
     time.sleep(3)
 
 
+def add_friends_who_commented(
+    page, post, skip_navigation=False, number_of_accounts=random.randint(5, 10)
+):
+    if not skip_navigation:
+        page.goto(post)
+        time.sleep(10)
+
+    page.mouse.wheel(0, 1000)
+    time.sleep(5)
+
+    accounts = page.query_selector_all(
+        "div.xv55zj0.x1vvkbs.x1rg5ohu.xxymvpz > div > div > span > span > a"
+    )
+
+    for account in accounts[:number_of_accounts]:
+        account.hover()
+        time.sleep(5)
+
+        if page.get_by_label("Add friend").is_visible():
+            page.get_by_label("Add friend").click()
+            time.sleep(5)
+
+            if page.get_by_text("Can't send request").is_visible():
+                page.get_by_label("Close").click()
+
+
+def add_accounts_who_shared(page, post, skip_navigation=False, number_of_accounts=10):
+    if not skip_navigation:
+        page.goto(post)
+        time.sleep(10)
+
+
 def main(playwright, email="", password=""):
 
     # page.get_by_label("Wow").click(position={"x":16,"y":22})
@@ -245,21 +214,20 @@ def main(playwright, email="", password=""):
     # )
     # print("posts: ", posts)
 
-    posts = ["https://www.facebook.com/groups/6671172949600388/posts/7801158673268471/"]
+    posts = ["https://www.facebook.com/groups/412570174716840/posts/487770273863496/"]
 
     for index, post in enumerate(posts):
 
         match index:
             case 0:
-                comment(
-                    page,
-                    post,
-                    "farming being ugly while you are not!! is this ego ?",
-                    additional_actions=[(react, Reaction.HAHA), share],
-                )
+                # comment(
+                #     page,
+                #     post,
+                #     "farming being ugly while you are not!! is this ego ?",
+                #     additional_actions=[(react, Reaction.HAHA), share],
+                # )
 
-                # get users from post
-                # send friend requests
+                add_friends_who_commented(page, post)
 
                 time.sleep(100)
 
@@ -311,3 +279,6 @@ def main(playwright, email="", password=""):
 
 with sync_playwright() as playwright:
     main(playwright, "0688109956", "facebookskhon")
+
+
+# ------------------------------
