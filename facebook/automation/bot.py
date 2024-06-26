@@ -165,7 +165,7 @@ def comment(page, post, comment, additional_actions=[]):
     time.sleep(10)
 
     page.get_by_label("Leave a comment").click()
-    time.sleep(5)
+    time.sleep(3)
 
     page.get_by_role("paragraph").fill(comment)
     time.sleep(3)
@@ -199,7 +199,7 @@ def react(page, post, reaction: Reaction, skip_navigation=False):
         page.goto(post)
         time.sleep(10)
 
-    page.get_by_label("Like").first.hover()
+    page.get_by_label("Like", exact=True).first.hover()
     time.sleep(5)
 
     page.get_by_label(reaction.value).click(position={"x": 17, "y": 21})
@@ -231,6 +231,8 @@ def main(playwright, email="", password=""):
 
     page = context.new_page()
 
+    page.set_default_timeout(60000)
+
     login(page, email, password)
     time.sleep(10)
 
@@ -243,7 +245,7 @@ def main(playwright, email="", password=""):
     # )
     # print("posts: ", posts)
 
-    posts = ["https://www.facebook.com/groups/412570174716840/posts/487007983939725/"]
+    posts = ["https://www.facebook.com/groups/6671172949600388/posts/7801158673268471/"]
 
     for index, post in enumerate(posts):
 
@@ -252,7 +254,7 @@ def main(playwright, email="", password=""):
                 comment(
                     page,
                     post,
-                    "in python i use match instead of elif",
+                    "farming being ugly while you are not!! is this ego ?",
                     additional_actions=[(react, Reaction.HAHA), share],
                 )
 

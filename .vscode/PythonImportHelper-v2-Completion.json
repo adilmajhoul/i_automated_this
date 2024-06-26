@@ -318,7 +318,7 @@
         "kind": 2,
         "importPath": "facebook.automation.bot",
         "description": "facebook.automation.bot",
-        "peekOfCode": "def comment(page, post, comment, additional_actions=[]):\n    # Navigate to the post page only if it wasn't loaded before\n    page.goto(post)\n    time.sleep(10)\n    page.get_by_label(\"Leave a comment\").click()\n    time.sleep(5)\n    page.get_by_role(\"paragraph\").fill(comment)\n    time.sleep(3)\n    page.keyboard.press(\"Enter\")\n    time.sleep(3)",
+        "peekOfCode": "def comment(page, post, comment, additional_actions=[]):\n    # Navigate to the post page only if it wasn't loaded before\n    page.goto(post)\n    time.sleep(10)\n    page.get_by_label(\"Leave a comment\").click()\n    time.sleep(3)\n    page.get_by_role(\"paragraph\").fill(comment)\n    time.sleep(3)\n    page.keyboard.press(\"Enter\")\n    time.sleep(3)",
         "detail": "facebook.automation.bot",
         "documentation": {}
     },
@@ -327,7 +327,7 @@
         "kind": 2,
         "importPath": "facebook.automation.bot",
         "description": "facebook.automation.bot",
-        "peekOfCode": "def react(page, post, reaction: Reaction, skip_navigation=False):\n    if not skip_navigation:\n        page.goto(post)\n        time.sleep(10)\n    page.get_by_label(\"Like\").first.hover()\n    time.sleep(5)\n    page.get_by_label(reaction.value).click(position={\"x\": 17, \"y\": 21})\n    time.sleep(3)\ndef share(page, post, skip_navigation=False):\n    if not skip_navigation:",
+        "peekOfCode": "def react(page, post, reaction: Reaction, skip_navigation=False):\n    if not skip_navigation:\n        page.goto(post)\n        time.sleep(10)\n    page.get_by_label(\"Like\", exact=True).first.hover()\n    time.sleep(5)\n    page.get_by_label(reaction.value).click(position={\"x\": 17, \"y\": 21})\n    time.sleep(3)\ndef share(page, post, skip_navigation=False):\n    if not skip_navigation:",
         "detail": "facebook.automation.bot",
         "documentation": {}
     },
@@ -345,7 +345,7 @@
         "kind": 2,
         "importPath": "facebook.automation.bot",
         "description": "facebook.automation.bot",
-        "peekOfCode": "def main(playwright, email=\"\", password=\"\"):\n    # page.get_by_label(\"Wow\").click(position={\"x\":16,\"y\":22})\n    # page.get_by_label(\"Sad\").click(position={\"x\":19,\"y\":20})\n    # page.get_by_label(\"Angry\").click(position={\"x\":17,\"y\":21})\n    # page.get_by_label(\"Leave a comment\").click()\n    # page.get_by_label(\"Comment as Adil Ahmed\").fill(\"wtf hhhhh\")\n    browser, context = initialize(playwright)\n    page = context.new_page()\n    login(page, email, password)\n    time.sleep(10)",
+        "peekOfCode": "def main(playwright, email=\"\", password=\"\"):\n    # page.get_by_label(\"Wow\").click(position={\"x\":16,\"y\":22})\n    # page.get_by_label(\"Sad\").click(position={\"x\":19,\"y\":20})\n    # page.get_by_label(\"Angry\").click(position={\"x\":17,\"y\":21})\n    # page.get_by_label(\"Leave a comment\").click()\n    # page.get_by_label(\"Comment as Adil Ahmed\").fill(\"wtf hhhhh\")\n    browser, context = initialize(playwright)\n    page = context.new_page()\n    page.set_default_timeout(60000)\n    login(page, email, password)",
         "detail": "facebook.automation.bot",
         "documentation": {}
     },
