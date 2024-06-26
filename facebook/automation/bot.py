@@ -186,6 +186,26 @@ def add_accounts_who_shared(page, post, skip_navigation=False, number_of_account
         page.goto(post)
         time.sleep(10)
 
+    page.get_by_role("button", name="shares").click()
+    time.sleep(5)
+
+    for i in range(2):
+        page.mouse.wheel(0, 200)
+        time.sleep(10)
+
+    accounts = page.query_selector_all("div.xu06os2.x1ok221b > span > h3 > span > a > strong > span")
+
+    for account in accounts[:number_of_accounts]:
+        account.hover()
+        time.sleep(5)
+
+        if page.get_by_label("Add friend").is_visible():
+            page.get_by_label("Add friend").click()
+            time.sleep(5)
+
+            if page.get_by_text("Can't send request").is_visible():
+                page.get_by_label("Close").click()
+
 
 def main(playwright, email="", password=""):
 
@@ -214,7 +234,7 @@ def main(playwright, email="", password=""):
     # )
     # print("posts: ", posts)
 
-    posts = ["https://www.facebook.com/groups/412570174716840/posts/487770273863496/"]
+    posts = ["https://www.facebook.com/groups/412570174716840/posts/487007983939725/"]
 
     for index, post in enumerate(posts):
 
@@ -227,7 +247,8 @@ def main(playwright, email="", password=""):
                 #     additional_actions=[(react, Reaction.HAHA), share],
                 # )
 
-                add_friends_who_commented(page, post)
+                # add_friends_who_commented(page, post)
+                add_accounts_who_shared(page, post)
 
                 time.sleep(100)
 

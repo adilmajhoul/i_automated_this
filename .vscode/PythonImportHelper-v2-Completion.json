@@ -8,6 +8,15 @@
         "documentation": {}
     },
     {
+        "label": "random",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "random",
+        "description": "random",
+        "detail": "random",
+        "documentation": {}
+    },
+    {
         "label": "time",
         "kind": 6,
         "isExtraImport": true,
@@ -282,42 +291,6 @@
         "kind": 2,
         "importPath": "facebook.automation.bot",
         "description": "facebook.automation.bot",
-        "peekOfCode": "def comment(page, post, comment):\n    pass\ndef share(page, post):\n    pass\ndef love_comment(page, post):\n    pass\ndef add_friend(page, post):\n    pass\n    page.get_by_label(\"Like\").nth(1).click()\n    page.get_by_label(\"Send this to friends or post\").click()",
-        "detail": "facebook.automation.bot",
-        "documentation": {}
-    },
-    {
-        "label": "share",
-        "kind": 2,
-        "importPath": "facebook.automation.bot",
-        "description": "facebook.automation.bot",
-        "peekOfCode": "def share(page, post):\n    pass\ndef love_comment(page, post):\n    pass\ndef add_friend(page, post):\n    pass\n    page.get_by_label(\"Like\").nth(1).click()\n    page.get_by_label(\"Send this to friends or post\").click()\n    page.get_by_role(\"button\", name=\"Share to Feed\").click()\n    page.get_by_role(\"button\", name=\"Share\").click()",
-        "detail": "facebook.automation.bot",
-        "documentation": {}
-    },
-    {
-        "label": "love_comment",
-        "kind": 2,
-        "importPath": "facebook.automation.bot",
-        "description": "facebook.automation.bot",
-        "peekOfCode": "def love_comment(page, post):\n    pass\ndef add_friend(page, post):\n    pass\n    page.get_by_label(\"Like\").nth(1).click()\n    page.get_by_label(\"Send this to friends or post\").click()\n    page.get_by_role(\"button\", name=\"Share to Feed\").click()\n    page.get_by_role(\"button\", name=\"Share\").click()\n    page.get_by_label(\"Love\", exact=True).click(position={\"x\": 17, \"y\": 26})\n    page.get_by_label(\"Care\").click(position={\"x\": 12, \"y\": 19})",
-        "detail": "facebook.automation.bot",
-        "documentation": {}
-    },
-    {
-        "label": "add_friend",
-        "kind": 2,
-        "importPath": "facebook.automation.bot",
-        "description": "facebook.automation.bot",
-        "peekOfCode": "def add_friend(page, post):\n    pass\n    page.get_by_label(\"Like\").nth(1).click()\n    page.get_by_label(\"Send this to friends or post\").click()\n    page.get_by_role(\"button\", name=\"Share to Feed\").click()\n    page.get_by_role(\"button\", name=\"Share\").click()\n    page.get_by_label(\"Love\", exact=True).click(position={\"x\": 17, \"y\": 26})\n    page.get_by_label(\"Care\").click(position={\"x\": 12, \"y\": 19})\n# def comment_US(page, post, comment):\n#     page.goto(post)",
-        "detail": "facebook.automation.bot",
-        "documentation": {}
-    },
-    {
-        "label": "comment",
-        "kind": 2,
-        "importPath": "facebook.automation.bot",
-        "description": "facebook.automation.bot",
         "peekOfCode": "def comment(page, post, comment, additional_actions=[]):\n    # Navigate to the post page only if it wasn't loaded before\n    page.goto(post)\n    time.sleep(10)\n    page.get_by_label(\"Leave a comment\").click()\n    time.sleep(3)\n    page.get_by_role(\"paragraph\").fill(comment)\n    time.sleep(3)\n    page.keyboard.press(\"Enter\")\n    time.sleep(3)",
         "detail": "facebook.automation.bot",
         "documentation": {}
@@ -336,7 +309,25 @@
         "kind": 2,
         "importPath": "facebook.automation.bot",
         "description": "facebook.automation.bot",
-        "peekOfCode": "def share(page, post, skip_navigation=False):\n    if not skip_navigation:\n        page.goto(post)\n        time.sleep(10)\n    page.get_by_label(\"Send this to friends or post\").click()\n    time.sleep(3)\n    page.get_by_label(\"Share now\").click()\n    time.sleep(3)\ndef main(playwright, email=\"\", password=\"\"):\n    # page.get_by_label(\"Wow\").click(position={\"x\":16,\"y\":22})",
+        "peekOfCode": "def share(page, post, skip_navigation=False):\n    if not skip_navigation:\n        page.goto(post)\n        time.sleep(10)\n    page.get_by_label(\"Send this to friends or post\").click()\n    time.sleep(3)\n    page.get_by_label(\"Share now\").click()\n    time.sleep(3)\ndef add_friends_who_commented(\n    page, post, skip_navigation=False, number_of_accounts=random.randint(5, 10)",
+        "detail": "facebook.automation.bot",
+        "documentation": {}
+    },
+    {
+        "label": "add_friends_who_commented",
+        "kind": 2,
+        "importPath": "facebook.automation.bot",
+        "description": "facebook.automation.bot",
+        "peekOfCode": "def add_friends_who_commented(\n    page, post, skip_navigation=False, number_of_accounts=random.randint(5, 10)\n):\n    if not skip_navigation:\n        page.goto(post)\n        time.sleep(10)\n    page.mouse.wheel(0, 1000)\n    time.sleep(5)\n    accounts = page.query_selector_all(\n        \"div.xv55zj0.x1vvkbs.x1rg5ohu.xxymvpz > div > div > span > span > a\"",
+        "detail": "facebook.automation.bot",
+        "documentation": {}
+    },
+    {
+        "label": "add_accounts_who_shared",
+        "kind": 2,
+        "importPath": "facebook.automation.bot",
+        "description": "facebook.automation.bot",
+        "peekOfCode": "def add_accounts_who_shared(page, post, skip_navigation=False, number_of_accounts=10):\n    if not skip_navigation:\n        page.goto(post)\n        time.sleep(10)\n    page.get_by_role(\"button\", name=\"shares\").click()\n    time.sleep(5)\n    for i in range(2):\n        page.mouse.wheel(0, 200)\n        time.sleep(10)\n    accounts = page.query_selector_all(\"div.xu06os2.x1ok221b > span > h3 > span > a > strong > span\")",
         "detail": "facebook.automation.bot",
         "documentation": {}
     },
