@@ -139,7 +139,9 @@ def react(page, post, reaction: Reaction, skip_navigation=False):
     page.get_by_label("Like", exact=True).first.hover()
     time.sleep(5)
 
-    page.get_by_label(reaction.value).click(position={"x": 17, "y": 21})
+    page.get_by_label(reaction.value, exact=True).first.click(
+        position={"x": 17, "y": 21}
+    )
     time.sleep(3)
 
 
@@ -246,7 +248,7 @@ def main(playwright, email="", password=""):
                     page,
                     post,
                     "thats funny",
-                    additional_actions=[(react, Reaction.LIKE), share],
+                    additional_actions=[(react, Reaction.LOVE), share],
                 )
 
                 add_friends_who_commented(page, post, number_of_accounts=10)
