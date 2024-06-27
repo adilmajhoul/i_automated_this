@@ -238,7 +238,7 @@ def main(playwright, email="", password=""):
     # )
     # print("posts: ", posts)
 
-    posts = ["https://www.facebook.com/groups/494596534740263/posts/1511327949733778/"]
+    posts = ["https://www.facebook.com/groups/412570174716840/posts/487770277196829/"]
 
     for index, post in enumerate(posts):
 
@@ -247,12 +247,14 @@ def main(playwright, email="", password=""):
                 comment(
                     page,
                     post,
-                    "thats funny",
+                    "great show",
                     additional_actions=[(react, Reaction.LOVE), share],
                 )
 
-                add_friends_who_commented(page, post, number_of_accounts=10)
-                add_accounts_who_shared(page, post, number_of_accounts=10)
+                # react(page, post, Reaction.LOVE, skip_navigation=False)
+
+                # add_friends_who_commented(page, post, number_of_accounts=10)
+                # add_accounts_who_shared(page, post, number_of_accounts=10)
 
                 time.sleep(100)
 
