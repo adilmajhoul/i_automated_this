@@ -300,7 +300,7 @@
         "kind": 2,
         "importPath": "facebook.automation.bot",
         "description": "facebook.automation.bot",
-        "peekOfCode": "def react(page, post, reaction: Reaction, skip_navigation=False):\n    if not skip_navigation:\n        page.goto(post)\n        time.sleep(10)\n    page.get_by_label(\"Like\", exact=True).first.hover()\n    time.sleep(5)\n    page.get_by_label(reaction.value).click(position={\"x\": 17, \"y\": 21})\n    time.sleep(3)\ndef share(page, post, skip_navigation=False):\n    if not skip_navigation:",
+        "peekOfCode": "def react(page, post, reaction: Reaction, skip_navigation=False):\n    if not skip_navigation:\n        page.goto(post)\n        time.sleep(10)\n    page.get_by_label(\"Like\", exact=True).first.hover()\n    time.sleep(7)\n    page.get_by_label(reaction.value).click(position={\"x\": 17, \"y\": 21})\n    time.sleep(3)\ndef share(page, post, skip_navigation=False):\n    if not skip_navigation:",
         "detail": "facebook.automation.bot",
         "documentation": {}
     },
@@ -327,7 +327,7 @@
         "kind": 2,
         "importPath": "facebook.automation.bot",
         "description": "facebook.automation.bot",
-        "peekOfCode": "def add_accounts_who_shared(page, post, skip_navigation=False, number_of_accounts=10):\n    if not skip_navigation:\n        page.goto(post)\n        time.sleep(10)\n    page.get_by_role(\"button\", name=\"shares\").click()\n    time.sleep(5)\n    for i in range(2):\n        page.mouse.wheel(0, 200)\n        time.sleep(10)\n    accounts = page.query_selector_all(\"div.xu06os2.x1ok221b > span > h3 > span > a > strong > span\")",
+        "peekOfCode": "def add_accounts_who_shared(page, post, skip_navigation=False, number_of_accounts=10):\n    if not skip_navigation:\n        page.goto(post)\n        time.sleep(10)\n    page.get_by_role(\"button\", name=\"shares\").click()\n    time.sleep(5)\n    for i in range(2):\n        page.mouse.wheel(0, 200)\n        time.sleep(10)\n    accounts = page.query_selector_all(",
         "detail": "facebook.automation.bot",
         "documentation": {}
     },

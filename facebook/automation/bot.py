@@ -137,7 +137,7 @@ def react(page, post, reaction: Reaction, skip_navigation=False):
         time.sleep(10)
 
     page.get_by_label("Like", exact=True).first.hover()
-    time.sleep(5)
+    time.sleep(7)
 
     page.get_by_label(reaction.value).click(position={"x": 17, "y": 21})
     time.sleep(3)
@@ -193,7 +193,9 @@ def add_accounts_who_shared(page, post, skip_navigation=False, number_of_account
         page.mouse.wheel(0, 200)
         time.sleep(10)
 
-    accounts = page.query_selector_all("div.xu06os2.x1ok221b > span > h3 > span > a > strong > span")
+    accounts = page.query_selector_all(
+        "div.xu06os2.x1ok221b > span > h3 > span > a > strong > span"
+    )
 
     for account in accounts[:number_of_accounts]:
         account.hover()
@@ -234,21 +236,21 @@ def main(playwright, email="", password=""):
     # )
     # print("posts: ", posts)
 
-    posts = ["https://www.facebook.com/groups/412570174716840/posts/487007983939725/"]
+    posts = ["https://www.facebook.com/groups/412570174716840/posts/487770277196829/"]
 
     for index, post in enumerate(posts):
 
         match index:
             case 0:
-                # comment(
-                #     page,
-                #     post,
-                #     "farming being ugly while you are not!! is this ego ?",
-                #     additional_actions=[(react, Reaction.HAHA), share],
-                # )
+                comment(
+                    page,
+                    post,
+                    "nice",
+                    additional_actions=[(react, Reaction.LOVE), share],
+                )
 
-                # add_friends_who_commented(page, post)
-                add_accounts_who_shared(page, post)
+                add_friends_who_commented(page, post, number_of_accounts=10)
+                add_accounts_who_shared(page, post, number_of_accounts=10)
 
                 time.sleep(100)
 
