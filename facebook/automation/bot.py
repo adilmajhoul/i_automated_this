@@ -137,7 +137,7 @@ def react(page, post, reaction: Reaction, skip_navigation=False):
         time.sleep(10)
 
     page.get_by_label("Like", exact=True).first.hover()
-    time.sleep(7)
+    time.sleep(5)
 
     page.get_by_label(reaction.value).click(position={"x": 17, "y": 21})
     time.sleep(3)
@@ -236,7 +236,7 @@ def main(playwright, email="", password=""):
     # )
     # print("posts: ", posts)
 
-    posts = ["https://www.facebook.com/groups/412570174716840/posts/487770277196829/"]
+    posts = ["https://www.facebook.com/groups/494596534740263/posts/1511327949733778/"]
 
     for index, post in enumerate(posts):
 
@@ -245,8 +245,8 @@ def main(playwright, email="", password=""):
                 comment(
                     page,
                     post,
-                    "nice",
-                    additional_actions=[(react, Reaction.LOVE), share],
+                    "thats funny",
+                    additional_actions=[(react, Reaction.LIKE), share],
                 )
 
                 add_friends_who_commented(page, post, number_of_accounts=10)
