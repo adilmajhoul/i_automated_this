@@ -139,9 +139,7 @@ def react(page, post, reaction: Reaction, skip_navigation=False):
     page.get_by_label("Like", exact=True).first.hover()
     time.sleep(5)
 
-    page.get_by_label(reaction.value, exact=True).first.click(
-        position={"x": 17, "y": 21}
-    )
+    page.get_by_label(reaction.value, exact=True).first.click(position={"x": 17, "y": 21})
     time.sleep(3)
 
 
@@ -157,19 +155,16 @@ def share(page, post, skip_navigation=False):
     time.sleep(3)
 
 
-def add_friends_who_commented(
-    page, post, skip_navigation=False, number_of_accounts=random.randint(5, 10)
-):
+def add_friends_who_commented(page, post, skip_navigation=False, number_of_accounts=random.randint(5, 10)):
     if not skip_navigation:
         page.goto(post)
         time.sleep(10)
 
-    page.mouse.wheel(0, 1000)
-    time.sleep(5)
+    for _ in range(number_of_accounts):
+        page.mouse.wheel(0, 1000)
+        time.sleep(10)
 
-    accounts = page.query_selector_all(
-        "div.xv55zj0.x1vvkbs.x1rg5ohu.xxymvpz > div > div > span > span > a"
-    )
+    accounts = page.query_selector_all("div.xv55zj0.x1vvkbs.x1rg5ohu.xxymvpz > div > div > span > span > a")
 
     for account in accounts[:number_of_accounts]:
         account.hover()
@@ -191,13 +186,11 @@ def add_accounts_who_shared(page, post, skip_navigation=False, number_of_account
     page.get_by_role("button", name="shares").click()
     time.sleep(5)
 
-    for i in range(2):
+    for _ in range(number_of_accounts):
         page.mouse.wheel(0, 200)
         time.sleep(10)
 
-    accounts = page.query_selector_all(
-        "div.xu06os2.x1ok221b > span > h3 > span > a > strong > span"
-    )
+    accounts = page.query_selector_all("div.xu06os2.x1ok221b > span > h3 > span > a > strong > span")
 
     for account in accounts[:number_of_accounts]:
         account.hover()
@@ -238,7 +231,7 @@ def main(playwright, email="", password=""):
     # )
     # print("posts: ", posts)
 
-    posts = ["https://www.facebook.com/groups/412570174716840/posts/487770277196829/"]
+    posts = ["https://www.facebook.com/groups/412570174716840/posts/487770273863496"]
 
     for index, post in enumerate(posts):
 
@@ -247,14 +240,16 @@ def main(playwright, email="", password=""):
                 comment(
                     page,
                     post,
-                    "great show",
+                    "not all of them about coding",
                     additional_actions=[(react, Reaction.LOVE), share],
                 )
 
                 # react(page, post, Reaction.LOVE, skip_navigation=False)
 
-                # add_friends_who_commented(page, post, number_of_accounts=10)
-                # add_accounts_who_shared(page, post, number_of_accounts=10)
+                add_friends_who_commented(page, post, number_of_accounts=20)
+                time.sleep(10)
+
+                add_accounts_who_shared(page, post, number_of_accounts=20)
 
                 time.sleep(100)
 

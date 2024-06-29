@@ -8,6 +8,14 @@
         "documentation": {}
     },
     {
+        "label": "Enum",
+        "importPath": "enum",
+        "description": "enum",
+        "isExtraImport": true,
+        "detail": "enum",
+        "documentation": {}
+    },
+    {
         "label": "random",
         "kind": 6,
         "isExtraImport": true,
@@ -34,6 +42,14 @@
         "documentation": {}
     },
     {
+        "label": "sync_playwright",
+        "importPath": "playwright.sync_api",
+        "description": "playwright.sync_api",
+        "isExtraImport": true,
+        "detail": "playwright.sync_api",
+        "documentation": {}
+    },
+    {
         "label": "Playwright",
         "importPath": "playwright.sync_api",
         "description": "playwright.sync_api",
@@ -79,6 +95,23 @@
         "description": "playwright.sync_api",
         "isExtraImport": true,
         "detail": "playwright.sync_api",
+        "documentation": {}
+    },
+    {
+        "label": "json",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "json",
+        "description": "json",
+        "detail": "json",
+        "documentation": {}
+    },
+    {
+        "label": "Process",
+        "importPath": "multiprocessing",
+        "description": "multiprocessing",
+        "isExtraImport": true,
+        "detail": "multiprocessing",
         "documentation": {}
     },
     {
@@ -199,15 +232,6 @@
         "documentation": {}
     },
     {
-        "label": "json",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "json",
-        "description": "json",
-        "detail": "json",
-        "documentation": {}
-    },
-    {
         "label": "argparse",
         "kind": 6,
         "isExtraImport": true,
@@ -300,7 +324,7 @@
         "kind": 2,
         "importPath": "facebook.automation.bot",
         "description": "facebook.automation.bot",
-        "peekOfCode": "def react(page, post, reaction: Reaction, skip_navigation=False):\n    if not skip_navigation:\n        page.goto(post)\n        time.sleep(10)\n    page.get_by_label(\"Like\", exact=True).first.hover()\n    time.sleep(5)\n    page.get_by_label(reaction.value).click(position={\"x\": 17, \"y\": 21})\n    time.sleep(3)\ndef share(page, post, skip_navigation=False):\n    if not skip_navigation:",
+        "peekOfCode": "def react(page, post, reaction: Reaction, skip_navigation=False):\n    if not skip_navigation:\n        page.goto(post)\n        time.sleep(10)\n    page.get_by_label(\"Like\", exact=True).first.hover()\n    time.sleep(5)\n    page.get_by_label(reaction.value, exact=True).first.click(position={\"x\": 17, \"y\": 21})\n    time.sleep(3)\ndef share(page, post, skip_navigation=False):\n    if not skip_navigation:",
         "detail": "facebook.automation.bot",
         "documentation": {}
     },
@@ -309,7 +333,7 @@
         "kind": 2,
         "importPath": "facebook.automation.bot",
         "description": "facebook.automation.bot",
-        "peekOfCode": "def share(page, post, skip_navigation=False):\n    if not skip_navigation:\n        page.goto(post)\n        time.sleep(10)\n    page.get_by_label(\"Send this to friends or post\").click()\n    time.sleep(3)\n    page.get_by_label(\"Share now\").click()\n    time.sleep(3)\ndef add_friends_who_commented(\n    page, post, skip_navigation=False, number_of_accounts=random.randint(5, 10)",
+        "peekOfCode": "def share(page, post, skip_navigation=False):\n    if not skip_navigation:\n        page.goto(post)\n        time.sleep(10)\n    page.get_by_label(\"Send this to friends or post\").click()\n    time.sleep(3)\n    page.get_by_label(\"Share now\").click()\n    time.sleep(3)\ndef add_friends_who_commented(page, post, skip_navigation=False, number_of_accounts=random.randint(5, 10)):\n    if not skip_navigation:",
         "detail": "facebook.automation.bot",
         "documentation": {}
     },
@@ -318,7 +342,7 @@
         "kind": 2,
         "importPath": "facebook.automation.bot",
         "description": "facebook.automation.bot",
-        "peekOfCode": "def add_friends_who_commented(\n    page, post, skip_navigation=False, number_of_accounts=random.randint(5, 10)\n):\n    if not skip_navigation:\n        page.goto(post)\n        time.sleep(10)\n    page.mouse.wheel(0, 1000)\n    time.sleep(5)\n    accounts = page.query_selector_all(\n        \"div.xv55zj0.x1vvkbs.x1rg5ohu.xxymvpz > div > div > span > span > a\"",
+        "peekOfCode": "def add_friends_who_commented(page, post, skip_navigation=False, number_of_accounts=random.randint(5, 10)):\n    if not skip_navigation:\n        page.goto(post)\n        time.sleep(10)\n    for _ in range(number_of_accounts):\n        page.mouse.wheel(0, 1000)\n        time.sleep(10)\n    accounts = page.query_selector_all(\"div.xv55zj0.x1vvkbs.x1rg5ohu.xxymvpz > div > div > span > span > a\")\n    for account in accounts[:number_of_accounts]:\n        account.hover()",
         "detail": "facebook.automation.bot",
         "documentation": {}
     },
@@ -327,7 +351,7 @@
         "kind": 2,
         "importPath": "facebook.automation.bot",
         "description": "facebook.automation.bot",
-        "peekOfCode": "def add_accounts_who_shared(page, post, skip_navigation=False, number_of_accounts=10):\n    if not skip_navigation:\n        page.goto(post)\n        time.sleep(10)\n    page.get_by_role(\"button\", name=\"shares\").click()\n    time.sleep(5)\n    for i in range(2):\n        page.mouse.wheel(0, 200)\n        time.sleep(10)\n    accounts = page.query_selector_all(",
+        "peekOfCode": "def add_accounts_who_shared(page, post, skip_navigation=False, number_of_accounts=10):\n    if not skip_navigation:\n        page.goto(post)\n        time.sleep(10)\n    page.get_by_role(\"button\", name=\"shares\").click()\n    time.sleep(5)\n    for _ in range(number_of_accounts):\n        page.mouse.wheel(0, 200)\n        time.sleep(10)\n    accounts = page.query_selector_all(\"div.xu06os2.x1ok221b > span > h3 > span > a > strong > span\")",
         "detail": "facebook.automation.bot",
         "documentation": {}
     },
@@ -338,6 +362,33 @@
         "description": "facebook.automation.bot",
         "peekOfCode": "def main(playwright, email=\"\", password=\"\"):\n    # page.get_by_label(\"Wow\").click(position={\"x\":16,\"y\":22})\n    # page.get_by_label(\"Sad\").click(position={\"x\":19,\"y\":20})\n    # page.get_by_label(\"Angry\").click(position={\"x\":17,\"y\":21})\n    # page.get_by_label(\"Leave a comment\").click()\n    # page.get_by_label(\"Comment as Adil Ahmed\").fill(\"wtf hhhhh\")\n    browser, context = initialize(playwright)\n    page = context.new_page()\n    page.set_default_timeout(60000)\n    login(page, email, password)",
         "detail": "facebook.automation.bot",
+        "documentation": {}
+    },
+    {
+        "label": "Reaction",
+        "kind": 6,
+        "importPath": "facebook.automation.bot_",
+        "description": "facebook.automation.bot_",
+        "peekOfCode": "class Reaction(Enum):\n    LIKE = \"Like\"\n    LOVE = \"Love\"\n    CARE = \"Care\"\n    HAHA = \"Haha\"\n    WOW = \"Wow\"\n    SAD = \"Sad\"\n    ANGRY = \"Angry\"\nclass FacebookBot:\n    def __init__(self, config):",
+        "detail": "facebook.automation.bot_",
+        "documentation": {}
+    },
+    {
+        "label": "FacebookBot",
+        "kind": 6,
+        "importPath": "facebook.automation.bot_",
+        "description": "facebook.automation.bot_",
+        "peekOfCode": "class FacebookBot:\n    def __init__(self, config):\n        self.email = config[\"email\"]\n        self.password = config[\"password\"]\n        self.number_of_accounts_to_add = config[\"number_of_accounts_to_add\"]\n        self.number_of_posts_to_scrape = config[\"number_of_posts_to_scrape\"]\n    def initialize(self, playwright):\n        self.browser = playwright.chromium.launch(headless=False)\n        self.context = self.browser.new_context()\n        self.page = self.context.new_page()",
+        "detail": "facebook.automation.bot_",
+        "documentation": {}
+    },
+    {
+        "label": "run_bot",
+        "kind": 2,
+        "importPath": "facebook.automation.bot_",
+        "description": "facebook.automation.bot_",
+        "peekOfCode": "def run_bot(config):\n    bot = FacebookBot(config)\n    bot.run()\nif __name__ == \"__main__\":\n    with open(\"config.json\", \"r\") as file:\n        configs = json.load(file)[\"bots\"]\n    for config in configs:\n        run_bot(config)",
+        "detail": "facebook.automation.bot_",
         "documentation": {}
     },
     {

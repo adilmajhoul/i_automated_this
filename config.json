@@ -1,0 +1,10 @@
+{
+  "bots": [
+    {
+      "email": "0688109956",
+      "password": "facebookskhon",
+      "number_of_accounts_to_add": 30,
+      "number_of_posts_to_scrape": 5
+    }
+  ]
+}
