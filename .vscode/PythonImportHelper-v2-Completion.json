@@ -34,6 +34,14 @@
         "documentation": {}
     },
     {
+        "label": "sleep",
+        "importPath": "time",
+        "description": "time",
+        "isExtraImport": true,
+        "detail": "time",
+        "documentation": {}
+    },
+    {
         "label": "sync_playwright",
         "importPath": "playwright.sync_api",
         "description": "playwright.sync_api",
@@ -206,6 +214,14 @@
         "documentation": {}
     },
     {
+        "label": "table",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
         "label": "declarative_base",
         "importPath": "sqlalchemy.ext.declarative",
         "description": "sqlalchemy.ext.declarative",
@@ -223,12 +239,12 @@
         "documentation": {}
     },
     {
-        "label": "sys",
+        "label": "pyautogui",
         "kind": 6,
         "isExtraImport": true,
-        "importPath": "sys",
-        "description": "sys",
-        "detail": "sys",
+        "importPath": "pyautogui",
+        "description": "pyautogui",
+        "detail": "pyautogui",
         "documentation": {}
     },
     {
@@ -238,6 +254,23 @@
         "importPath": "argparse",
         "description": "argparse",
         "detail": "argparse",
+        "documentation": {}
+    },
+    {
+        "label": "Bot",
+        "importPath": "bot",
+        "description": "bot",
+        "isExtraImport": true,
+        "detail": "bot",
+        "documentation": {}
+    },
+    {
+        "label": "sys",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "sys",
+        "description": "sys",
+        "detail": "sys",
         "documentation": {}
     },
     {
@@ -767,6 +800,24 @@
         "description": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.settings",
         "peekOfCode": "FEED_EXPORT_ENCODING = \"utf-8\"",
         "detail": "theworldwatch.scrapy_theworldwatch.scrapy_theworldwatch.settings",
+        "documentation": {}
+    },
+    {
+        "label": "Bot",
+        "kind": 6,
+        "importPath": "tiktok_to_ig_pyautogui.bot",
+        "description": "tiktok_to_ig_pyautogui.bot",
+        "peekOfCode": "class Bot:\n    def __init__(self):\n        self.adress_bar = (187, 96)\n        self.snaptik_url_field = (460, 464)\n        self.snaptik_first_download = (972, 453)\n        self.snaptik_second_download = (1079, 266)\n        self.snaptik_home_logo = (142, 177)\n    def switch_to_tab(self, tab_number):\n        pg.hotkey(\"ctrl\", str(tab_number))\n        sleep(1.5)",
+        "detail": "tiktok_to_ig_pyautogui.bot",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": "tiktok_to_ig_pyautogui.main",
+        "description": "tiktok_to_ig_pyautogui.main",
+        "peekOfCode": "def main():\n    parser = argparse.ArgumentParser(description=\"Automate TikTok and Instagram tasks using PyAutoGUI.\")\n    parser.add_argument(\"--urls\", type=str, nargs=\"+\", required=True, help=\"A list of URLs.\")\n    args = parser.parse_args()\n    bot = Bot()\n    bot.run(args.urls)\nif __name__ == \"__main__\":\n    main()",
+        "detail": "tiktok_to_ig_pyautogui.main",
         "documentation": {}
     },
     {
