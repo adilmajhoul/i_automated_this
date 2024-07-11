@@ -4,9 +4,7 @@ from time import sleep
 # import os
 
 # You may also need the webbrowser library to open Chrome tabs initially
-# import webbrowser
-
-from sqlalchemy import table
+import webbrowser
 
 
 class Bot:
@@ -18,6 +16,8 @@ class Bot:
         self.snaptik_first_download = (972, 453)
         self.snaptik_second_download = (1079, 266)
         self.snaptik_home_logo = (142, 177)
+
+        self.browser_path = "/usr/bin/google-chrome-stable"
 
     def switch_to_tab(self, tab_number):
         pg.hotkey("ctrl", str(tab_number))
@@ -34,16 +34,24 @@ class Bot:
     def wait_for_image(self, image_path, timeout=5):
 
         while True:
-            image = pg.locateCenterOnScreen(image_path)
+            try:
+                image = pg.locateCenterOnScreen(image_path)
+            except:
+                image = None
 
             if image:
                 return image
+
+            print(f"Waiting for {image_path} ...")
 
             sleep(timeout)
 
     def run(self, tiktok_videos=[]):
 
         # run chrome
+        webbrowser.open("http://www.google.com")
+        # sleep(10)
+        image = self.wait_for_image("images/firefox_x.png")
 
         # open three tabs tiktok,meta suite, and snaptik
 
