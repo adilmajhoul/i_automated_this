@@ -31,7 +31,21 @@ class Bot:
     #         sleep(5)
     #     return False
 
+    def wait_for_image(self, image_path, timeout=5):
+
+        while True:
+            image = pg.locateCenterOnScreen(image_path)
+
+            if image:
+                return image
+
+            sleep(timeout)
+
     def run(self, tiktok_videos=[]):
+
+        # run chrome
+
+        # open three tabs tiktok,meta suite, and snaptik
 
         # click chrome to focus
         pg.click(1032, 53)
@@ -81,10 +95,13 @@ class Bot:
             pg.click(self.snaptik_home_logo)
             sleep(1.5)
 
-        # click ig tab
-        # wait for download
-        # click upload to ig
-        # choose video
-        # click upload
+            # switch to meta business suite tab
 
-        # remove video from folder
+            # click upload reel
+
+            # choose video
+
+            # image = self.wait_for_image("images/reel_upload_100%.png")
+
+            # click next
+            # schedual or upload
