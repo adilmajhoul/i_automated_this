@@ -1,5 +1,6 @@
 import pyautogui as pg
 from time import sleep
+import os
 
 # import os
 
@@ -12,12 +13,16 @@ class Bot:
 
         self.adress_bar = (187, 96)
 
-        self.snaptik_url_field = (460, 464)
-        self.snaptik_first_download = (972, 453)
-        self.snaptik_second_download = (1079, 266)
-        self.snaptik_home_logo = (142, 177)
+        self.snaptik_url_field = (592, 425)
+        self.snaptik_first_download = (991, 422)
+        self.snaptik_second_download = (1101, 233)
+        self.snaptik_home_logo = (147, 141)
 
         self.browser_path = "/usr/bin/google-chrome-stable"
+
+        self.snaptik_url = "https://snaptik.app/en1"
+
+        self.reel_upload_link = "https://business.facebook.com/latest/reels_composer"
 
     def switch_to_tab(self, tab_number):
         pg.hotkey("ctrl", str(tab_number))
@@ -40,6 +45,7 @@ class Bot:
                 image = None
 
             if image:
+                print(f"FOUND {image_path} !")
                 return image
 
             print(f"Waiting for {image_path} ...")
@@ -48,42 +54,38 @@ class Bot:
 
     def run(self, tiktok_videos=[]):
 
-        # run chrome
-        webbrowser.open("http://www.google.com")
-        # sleep(10)
-        image = self.wait_for_image("images/firefox_x.png")
-
-        # open three tabs tiktok,meta suite, and snaptik
-
-        # click chrome to focus
         pg.click(1032, 53)
 
+        # run chrome
+        # open empty chrome tab
+        # os.system("xdg-open https://google.com")
+        webbrowser.open("https://google.com")
+
+        # sleep(10)
+        image = self.wait_for_image("images/google_logo.png")
+
+        # click chrome to focus
+        # pg.click(1032, 53)
+
+        # open two more tabs
+        for _ in range(2):
+            pg.hotkey("ctrl", "t")
+            sleep(1.5)
+
+        # switch to 3rd tab and go to snaptik
         self.switch_to_tab(3)
         sleep(1.5)
+        pg.click(self.adress_bar)
+        sleep(1.5)
+        pg.hotkey("ctrl", "a")
+        sleep(1.5)
+        pg.typewrite(self.snaptik_url)
+        sleep(1.5)
+        pg.hotkey("enter")
+
+        image = self.wait_for_image("images/snaptik_logo.png", timeout=2)
 
         for url in tiktok_videos:
-
-            # self.switch_to_tab(1.5)
-            # sleep(1.5)
-
-            # pg.click(self.adress_bar)
-            # sleep(1.5)
-
-            # # write url to adress bar
-            # pg.typewrite(url)
-            # sleep(1.5)
-
-            # pg.hotkey("enter")
-            # sleep(1.5)
-
-            # pg.hotkey("ctrl", "a")
-            # sleep(1.5)
-
-            # pg.hotkey("ctrl", "c")
-            # sleep(1.5)
-
-            # self.switch_to_tab(3)
-            # sleep(1.5)
 
             pg.click(self.snaptik_url_field)
             sleep(1.5)
@@ -103,13 +105,20 @@ class Bot:
             pg.click(self.snaptik_home_logo)
             sleep(1.5)
 
-            # switch to meta business suite tab
+        # get videos names
+        videos = [video for video in os.listdir("videos_to_upload/") if video.endswith(".mp4")]
 
-            # click upload reel
+        print("videos: ", videos)  # videos:  ['video3.mp4', 'video1.mp4', 'video2.mp4']
 
-            # choose video
+        for _ in range(len(videos)):
+            pg.hotkey("ctrl", "t")
+            sleep(1.5)
 
-            # image = self.wait_for_image("images/reel_upload_100%.png")
-
-            # click next
-            # schedual or upload
+            # TODO: coonvert this to fnuction called goto_site(self,url)
+            pg.click(self.adress_bar)
+            sleep(1.5)
+            pg.hotkey("ctrl", "a")
+            sleep(1.5)
+            pg.typewrite(self.reel_upload_link)
+            sleep(1.5)
+            pg.hotkey("enter")
