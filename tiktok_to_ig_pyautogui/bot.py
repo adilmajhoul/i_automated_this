@@ -69,7 +69,6 @@ class Bot:
 
         pg.click(1032, 53)
 
-        # run chrome
         # open empty chrome tab
         # os.system("xdg-open https://google.com")
         webbrowser.open("https://google.com")
