@@ -36,13 +36,13 @@ def login(page):
     page.get_by_placeholder("please enter login here").click()
     time.sleep(2)
 
-    page.get_by_placeholder("please enter login here").fill("narax38053")
+    page.get_by_placeholder("please enter login here").fill("__user__")
     time.sleep(2)
 
     page.get_by_label("Password").click()
     time.sleep(2)
 
-    page.get_by_label("Password").fill("theworldwatch9lawi1-")
+    page.get_by_label("Password").fill("__password__")
     time.sleep(2)
 
     page.get_by_text("remember me").click()
@@ -65,9 +65,7 @@ def message(page, user):
     page.locator("#send_message_message").nth(1).click()
     time.sleep(2)
 
-    page.locator("#send_message_message").nth(1).fill(
-        f"hi {user['username']} how are you bro ? "
-    )
+    page.locator("#send_message_message").nth(1).fill(f"hi {user['username']} how are you bro ? ")
     time.sleep(2)
 
     page.get_by_role("img", name=":heart:").click()

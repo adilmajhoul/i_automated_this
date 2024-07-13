@@ -300,7 +300,7 @@ def main(playwright, email="", password=""):
 
 
 with sync_playwright() as playwright:
-    main(playwright, "0688109956", "facebookskhon")
+    main(playwright, "__user__", "__password__")
 
 
 # ------------------------------

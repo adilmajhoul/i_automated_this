@@ -15,13 +15,13 @@ def run(playwright: Playwright) -> None:
     page.get_by_test_id("royal_email").click()
     time.sleep(2)
 
-    page.get_by_test_id("royal_email").fill("0688109956")
+    page.get_by_test_id("royal_email").fill("__user__")
     time.sleep(2)
 
     page.get_by_test_id("royal_pass").click()
     time.sleep(2)
 
-    page.get_by_test_id("royal_pass").fill("facebookskhon")
+    page.get_by_test_id("royal_pass").fill("__password__")
     time.sleep(2)
 
     page.get_by_test_id("royal_login_button").click()

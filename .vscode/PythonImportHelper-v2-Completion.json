@@ -42,6 +42,14 @@
         "documentation": {}
     },
     {
+        "label": "sleep",
+        "importPath": "time",
+        "description": "time",
+        "isExtraImport": true,
+        "detail": "time",
+        "documentation": {}
+    },
+    {
         "label": "sync_playwright",
         "importPath": "playwright.sync_api",
         "description": "playwright.sync_api",
@@ -120,6 +128,32 @@
         "description": "multiprocessing",
         "isExtraImport": true,
         "detail": "multiprocessing",
+        "documentation": {}
+    },
+    {
+        "label": "pyautogui",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pyautogui",
+        "description": "pyautogui",
+        "detail": "pyautogui",
+        "documentation": {}
+    },
+    {
+        "label": "argparse",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "argparse",
+        "description": "argparse",
+        "detail": "argparse",
+        "documentation": {}
+    },
+    {
+        "label": "Indeed_Apply_Bot",
+        "importPath": "indeed_apply_bot",
+        "description": "indeed_apply_bot",
+        "isExtraImport": true,
+        "detail": "indeed_apply_bot",
         "documentation": {}
     },
     {
@@ -214,14 +248,6 @@
         "documentation": {}
     },
     {
-        "label": "table",
-        "importPath": "sqlalchemy",
-        "description": "sqlalchemy",
-        "isExtraImport": true,
-        "detail": "sqlalchemy",
-        "documentation": {}
-    },
-    {
         "label": "declarative_base",
         "importPath": "sqlalchemy.ext.declarative",
         "description": "sqlalchemy.ext.declarative",
@@ -239,21 +265,21 @@
         "documentation": {}
     },
     {
-        "label": "pyautogui",
+        "label": "os",
         "kind": 6,
         "isExtraImport": true,
-        "importPath": "pyautogui",
-        "description": "pyautogui",
-        "detail": "pyautogui",
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
         "documentation": {}
     },
     {
-        "label": "argparse",
+        "label": "webbrowser",
         "kind": 6,
         "isExtraImport": true,
-        "importPath": "argparse",
-        "description": "argparse",
-        "detail": "argparse",
+        "importPath": "webbrowser",
+        "description": "webbrowser",
+        "detail": "webbrowser",
         "documentation": {}
     },
     {
@@ -425,6 +451,24 @@
         "documentation": {}
     },
     {
+        "label": "Indeed_Apply_Bot",
+        "kind": 6,
+        "importPath": "indeed_apply_gui_bot.indeed_apply_bot",
+        "description": "indeed_apply_gui_bot.indeed_apply_bot",
+        "peekOfCode": "class Indeed_Apply_Bot:\n    def __init__(self, jobs_amount):\n        self.adress_bar = (181, 96)\n        self.choose_resume = (383, 489)\n        self.continue_button = (594, 546)\n        self.jobs_amount = jobs_amount\n    def switch_to_tab(self, tab_number):\n        pg.hotkey(\"alt\", str(tab_number))\n    def run(self):\n        pg.click(self.adress_bar)",
+        "detail": "indeed_apply_gui_bot.indeed_apply_bot",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": "indeed_apply_gui_bot.main",
+        "description": "indeed_apply_gui_bot.main",
+        "peekOfCode": "def main():\n    parser = argparse.ArgumentParser(description=\"Automate TikTok and Instagram tasks using PyAutoGUI.\")\n    parser.add_argument(\"--jobs\", type=int, required=True, help=\"number of jobs to apply to\")\n    args = parser.parse_args()\n    bot = Indeed_Apply_Bot(args.jobs)\n    bot.run()\nif __name__ == \"__main__\":\n    main()",
+        "detail": "indeed_apply_gui_bot.main",
+        "documentation": {}
+    },
+    {
         "label": "load_users",
         "kind": 2,
         "importPath": "theworldwatch.automation.theworldwatch",
@@ -438,7 +482,7 @@
         "kind": 2,
         "importPath": "theworldwatch.automation.theworldwatch",
         "description": "theworldwatch.automation.theworldwatch",
-        "peekOfCode": "def login(page):\n    page.goto(\"https://theworldwatch.com/\")\n    page.locator(\"#login\").click()\n    time.sleep(2)\n    page.get_by_placeholder(\"please enter login here\").click()\n    time.sleep(2)\n    page.get_by_placeholder(\"please enter login here\").fill(\"narax38053\")\n    time.sleep(2)\n    page.get_by_label(\"Password\").click()\n    time.sleep(2)",
+        "peekOfCode": "def login(page):\n    page.goto(\"https://theworldwatch.com/\")\n    page.locator(\"#login\").click()\n    time.sleep(2)\n    page.get_by_placeholder(\"please enter login here\").click()\n    time.sleep(2)\n    page.get_by_placeholder(\"please enter login here\").fill(\"__user__\")\n    time.sleep(2)\n    page.get_by_label(\"Password\").click()\n    time.sleep(2)",
         "detail": "theworldwatch.automation.theworldwatch",
         "documentation": {}
     },
@@ -447,7 +491,7 @@
         "kind": 2,
         "importPath": "theworldwatch.automation.theworldwatch",
         "description": "theworldwatch.automation.theworldwatch",
-        "peekOfCode": "def message(page, user):\n    page.goto(user[\"profile_link\"])\n    page.get_by_role(\"link\", name=\"Send Message...\").click()\n    time.sleep(2)\n    page.locator(\"#send_message_message\").nth(1).click()\n    time.sleep(2)\n    page.locator(\"#send_message_message\").nth(1).fill(\n        f\"hi {user['username']} how are you bro ? \"\n    )\n    time.sleep(2)",
+        "peekOfCode": "def message(page, user):\n    page.goto(user[\"profile_link\"])\n    page.get_by_role(\"link\", name=\"Send Message...\").click()\n    time.sleep(2)\n    page.locator(\"#send_message_message\").nth(1).click()\n    time.sleep(2)\n    page.locator(\"#send_message_message\").nth(1).fill(f\"hi {user['username']} how are you bro ? \")\n    time.sleep(2)\n    page.get_by_role(\"img\", name=\":heart:\").click()\n    time.sleep(2)",
         "detail": "theworldwatch.automation.theworldwatch",
         "documentation": {}
     },
@@ -807,7 +851,7 @@
         "kind": 6,
         "importPath": "tiktok_to_ig_pyautogui.bot",
         "description": "tiktok_to_ig_pyautogui.bot",
-        "peekOfCode": "class Bot:\n    def __init__(self):\n        self.adress_bar = (187, 96)\n        self.snaptik_url_field = (460, 464)\n        self.snaptik_first_download = (972, 453)\n        self.snaptik_second_download = (1079, 266)\n        self.snaptik_home_logo = (142, 177)\n    def switch_to_tab(self, tab_number):\n        pg.hotkey(\"ctrl\", str(tab_number))\n        sleep(1.5)",
+        "peekOfCode": "class Bot:\n    def __init__(self):\n        self.adress_bar = (187, 96)\n        self.snaptik_url_field = (592, 425)\n        self.snaptik_first_download = (991, 422)\n        self.snaptik_second_download = (1101, 233)\n        self.snaptik_home_logo = (147, 141)\n        self.browser_path = \"/usr/bin/google-chrome-stable\"\n        self.snaptik_url = \"https://snaptik.app/en1\"\n        self.bsuit_reel_upload_link = \"https://business.facebook.com/latest/reels_composer\"",
         "detail": "tiktok_to_ig_pyautogui.bot",
         "documentation": {}
     },
@@ -834,7 +878,7 @@
         "kind": 2,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "def run(playwright: Playwright) -> None:\n    browser = playwright.chromium.launch(headless=False)\n    context = browser.new_context()\n    page = context.new_page()\n    page.goto(\"https://www.facebook.com/\")\n    time.sleep(2)\n    page.get_by_test_id(\"royal_email\").click()\n    time.sleep(2)\n    page.get_by_test_id(\"royal_email\").fill(\"0688109956\")\n    time.sleep(2)",
+        "peekOfCode": "def run(playwright: Playwright) -> None:\n    browser = playwright.chromium.launch(headless=False)\n    context = browser.new_context()\n    page = context.new_page()\n    page.goto(\"https://www.facebook.com/\")\n    time.sleep(2)\n    page.get_by_test_id(\"royal_email\").click()\n    time.sleep(2)\n    page.get_by_test_id(\"royal_email\").fill(\"__user__\")\n    time.sleep(2)",
         "detail": "main",
         "documentation": {}
     }
