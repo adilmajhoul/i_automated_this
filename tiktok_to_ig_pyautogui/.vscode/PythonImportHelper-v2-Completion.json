@@ -1,0 +1,133 @@
+[
+    {
+        "label": "pyautogui",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pyautogui",
+        "description": "pyautogui",
+        "detail": "pyautogui",
+        "documentation": {}
+    },
+    {
+        "label": "time",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "time",
+        "description": "time",
+        "detail": "time",
+        "documentation": {}
+    },
+    {
+        "label": "sleep",
+        "importPath": "time",
+        "description": "time",
+        "isExtraImport": true,
+        "detail": "time",
+        "documentation": {}
+    },
+    {
+        "label": "sleep",
+        "importPath": "time",
+        "description": "time",
+        "isExtraImport": true,
+        "detail": "time",
+        "documentation": {}
+    },
+    {
+        "label": "sleep",
+        "importPath": "time",
+        "description": "time",
+        "isExtraImport": true,
+        "detail": "time",
+        "documentation": {}
+    },
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "webbrowser",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "webbrowser",
+        "description": "webbrowser",
+        "detail": "webbrowser",
+        "documentation": {}
+    },
+    {
+        "label": "cv2",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "cv2",
+        "description": "cv2",
+        "detail": "cv2",
+        "documentation": {}
+    },
+    {
+        "label": "numpy",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "numpy",
+        "description": "numpy",
+        "detail": "numpy",
+        "documentation": {}
+    },
+    {
+        "label": "argparse",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "argparse",
+        "description": "argparse",
+        "detail": "argparse",
+        "documentation": {}
+    },
+    {
+        "label": "Bot",
+        "importPath": "bot",
+        "description": "bot",
+        "isExtraImport": true,
+        "detail": "bot",
+        "documentation": {}
+    },
+    {
+        "label": "Bot",
+        "kind": 6,
+        "importPath": "bot",
+        "description": "bot",
+        "peekOfCode": "class Bot:\n    def __init__(self):\n        self.adress_bar = (187, 96)\n        self.snaptik_url_field = (592, 425)\n        self.snaptik_first_download = (991, 422)\n        self.snaptik_second_download = (1101, 233)\n        self.snaptik_home_logo = (147, 141)\n        self.browser_path = \"/usr/bin/google-chrome-stable\"\n        self.snaptik_url = \"https://snaptik.app/en1\"\n        self.bsuit_reel_upload_link = \"https://business.facebook.com/latest/reels_composer\"",
+        "detail": "bot",
+        "documentation": {}
+    },
+    {
+        "label": "bot",
+        "kind": 5,
+        "importPath": "bot",
+        "description": "bot",
+        "peekOfCode": "bot = Bot()\nbot.run([\"https://www.tiktok.com/@example1/video/1234567890\", \"https://www.tiktok.com/@example2/video/0987654321\"])",
+        "detail": "bot",
+        "documentation": {}
+    },
+    {
+        "label": "Bot",
+        "kind": 6,
+        "importPath": "bot_",
+        "description": "bot_",
+        "peekOfCode": "class Bot:\n    def __init__(self):\n        self.adress_bar = (187, 96)\n        self.snaptik_url_field = (592, 425)\n        self.snaptik_first_download = (991, 422)\n        self.snaptik_second_download = (1101, 233)\n        self.snaptik_home_logo = (147, 141)\n        self.browser_path = \"/usr/bin/google-chrome-stable\"\n        self.snaptik_url = \"https://snaptik.app/en1\"\n        self.bsuit_reel_upload_link = \"https://business.facebook.com/latest/reels_composer\"",
+        "detail": "bot_",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "def main():\n    parser = argparse.ArgumentParser(description=\"Automate TikTok and Instagram tasks using PyAutoGUI.\")\n    parser.add_argument(\"--urls\", type=str, nargs=\"+\", required=True, help=\"A list of URLs.\")\n    args = parser.parse_args()\n    bot = Bot()\n    bot.run(args.urls)\nif __name__ == \"__main__\":\n    main()",
+        "detail": "main",
+        "documentation": {}
+    }
+]
