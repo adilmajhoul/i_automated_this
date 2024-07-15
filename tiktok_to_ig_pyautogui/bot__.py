@@ -1,64 +1,52 @@
 import pyautogui as pg
 from time import sleep
+import time
 import os
+import webbrowser
 import cv2
+from SimpleCV import Image as SimpleCVImage
+
+# import pytesseract
+# from PIL import Image
+# from skimage import io, color, feature
+# import dlib
 import numpy as np
 
-# import os
-
-# You may also need the webbrowser library to open Chrome tabs initially
-import webbrowser
+# from SimpleCV import Image as SimpleCVImage, Template
 
 
 class Bot:
     def __init__(self):
-
         self.adress_bar = (187, 96)
-
         self.snaptik_url_field = (592, 425)
         self.snaptik_first_download = (991, 422)
         self.snaptik_second_download = (1101, 233)
         self.snaptik_home_logo = (147, 141)
-
         self.browser_path = "/usr/bin/google-chrome-stable"
-
         self.snaptik_url = "https://snaptik.app/en1"
-
         self.bsuit_reel_upload_link = "https://business.facebook.com/latest/reels_composer"
 
     def switch_to_tab(self, tab_number):
         pg.hotkey("alt", str(tab_number))
 
-    # def wait_for_download(download_folder, timeout=300):
-    #     start_time = time.time()
-    #     while time.time() - start_time < timeout:
-    #         if any(file.endswith(".mp4") for file in os.listdir(download_folder)):
-    #             return True
-    #         sleep(5)
-    #     return False
-
-    """ 
-    def wait_for_image(self, image_path, timeout=5):
+    def wait_for_image(self, image_path, timeout=2, method="opencv"):
+        start_time = time.time()
 
         while True:
-            try:
-                image = pg.locateCenterOnScreen(image_path)
-            except:
-                image = None
-
-            if image:
-                print(f"FOUND {image_path} !")
-                return image
-
-            print(f"Waiting for {image_path} ...")
-
-            sleep(timeout)
-    """
-
-    def wait_for_image(self, image_path, timeout=1.5):
-
-        while True:
-            image = self.locate_image_opencv(image_path)
+            if method == "opencv":
+                image = self.locate_image_opencv(image_path)
+            # elif method == 'tesseract':
+            #     image = self.locate_image_tesseract(image_path)
+            # elif method == 'pillow':
+            #     image = self.locate_image_pillow(image_path)
+            # elif method == 'scikit_image':
+            #     image = self.locate_image_scikit(image_path)
+            # elif method == 'dlib':
+            #     image = self.locate_image_dlib(image_path)
+            # elif method == 'simplecv':
+            #     image = self.locate_image_simplecv(image_path)
+            # else:
+            #     raise ValueError("Invalid method specified.")
 
             if image:
                 print(f"FOUND {image_path}!")
@@ -87,6 +75,23 @@ class Bot:
             return max_loc
         return None
 
+    def locate_image_simplecv(self, image_path):
+        screenshot = pg.screenshot()
+
+        screenshot_np = np.array(screenshot)
+
+        screen = SimpleCVImage(screenshot_np)
+
+        template = SimpleCVImage(image_path)
+
+        match = screen.findTemplate(template, threshold=0.8)
+
+        print("simple cv match: ", match)
+
+        if match:
+            return match[0].x, match[0].y
+        return None
+
     def goto_site(self, url):
         pg.click(self.adress_bar)
         sleep(1.5)
@@ -96,147 +101,73 @@ class Bot:
         sleep(1.5)
         pg.hotkey("enter")
 
-    def click_image(self, image_path):
-        image = self.wait_for_image(image_path)
-        pg.click(image)
+    def click_image(self, image_path, method="opencv"):
+        image = self.wait_for_image(image_path, method=method)
+        if image:
+            pg.click(image)
 
     def run(self, tiktok_videos=[]):
-
         pg.click(1032, 53)
-
-        # open empty chrome tab
-        # os.system("xdg-open https://google.com")
         webbrowser.open("https://google.com")
-
-        # sleep(10)
-        image = self.wait_for_image("images/google_logo.png")
-
-        # click chrome to focus
-        # pg.click(1032, 53)
-
-        # open two more tabs
-        # for _ in range(2):
-
+        image = self.wait_for_image("images/google_logo.png", method="opencv")
         pg.hotkey("ctrl", "t")
         sleep(1.5)
-
-        # switch to 3rd tab and go to snaptik
         self.switch_to_tab(2)
         sleep(1.5)
-
         self.goto_site(self.snaptik_url)
-
-        image = self.wait_for_image("images/snaptik_logo.png", timeout=2)
+        image = self.wait_for_image("images/snaptik_logo.png", timeout=2, method="opencv")
 
         for url in tiktok_videos:
-
             pg.click(self.snaptik_url_field)
             sleep(1.5)
 
-            # pg.typewrite(url)
-            # sleep(1.5)
-
-            # pg.click(self.snaptik_first_download)
-            # sleep(1.5)
-
-            # pg.click(self.snaptik_second_download)
-            # sleep(1.5)
-
-            # pg.click(self.snaptik_home_logo)
-            # sleep(1.5)
-
-        # get videos names
         videos = [video for video in os.listdir("/home/x/0-videos_to_upload") if video.endswith(".mp4")]
         sleep(1.5)
-
-        print("videos: ", videos)  # videos:  ['video3.mp4', 'video1.mp4', 'video2.mp4']
-
-        # open new tab
-        # for video in videos loop
-
-        # goto bsuit site
-        # wait page to load
-
-        # click add
-
-        # wait for load 100%
-
-        # click next
-
-        # click next
-
-        # click share
-
-        # wait for reel published image
+        print("videos: ", videos)
 
         for _ in range(len(videos)):
             pg.hotkey("ctrl", "t")
             sleep(1.5)
-
-            # TODO: coonvert this to fnuction called goto_site(self,url)
             self.goto_site(self.bsuit_reel_upload_link)
             sleep(1.5)
 
         current_bsuit_tab = 3
         for index, video in enumerate(videos):
-
             self.switch_to_tab(current_bsuit_tab)
             sleep(1.5)
-
-            # click add video
             if index == 0:
-                self.wait_for_image("images/bsuit/create_reel.png")
+                self.wait_for_image("images/bsuit/create_reel.png", method="opencv")
             pg.click(151, 438)
             sleep(6)
-
-            # click home
             pg.click(86, 136)
             sleep(1.5)
-
-            # click enter
             pg.hotkey("enter")
             sleep(1.5)
-
-            # ctrl + f to search needed video
             pg.hotkey("ctrl", "f")
             sleep(1.5)
-
             pg.typewrite(video)
             sleep(1.5)
-
-            # click enter
             pg.hotkey("enter")
             sleep(1.5)
-
             current_bsuit_tab += 1
 
         current_bsuit_tab = 3
         for _ in range(len(videos)):
-
             self.switch_to_tab(current_bsuit_tab)
             sleep(1.5)
-
-            # wait for progress 100
-            self.wait_for_image("images/bsuit/upload_progress_100%.png")
+            self.wait_for_image("images/bsuit/upload_progress_100%.png", method="opencv")
             sleep(1.5)
-
-            # click next
-            self.click_image("images/bsuit/next_button.png")
+            self.click_image("images/bsuit/next_button.png", method="opencv")
             sleep(2)
-
-            # wait
-            # click next again
-            self.click_image("images/bsuit/next_button.png")
+            self.click_image("images/bsuit/next_button.png", method="opencv")
             sleep(2)
-
-            # wait
-
-            # click share
-            self.click_image("images/bsuit/share_button.png")
+            self.click_image("images/bsuit/share_button.png", method="opencv")
             sleep(2)
-
-            # wait for upload modaL
-            self.wait_for_image("images/bsuit/reel_published.png")
+            self.wait_for_image("images/bsuit/reel_published.png", method="opencv")
             sleep(1.5)
-
             current_bsuit_tab += 1
+
+
+# Initialize and run the bot
+bot = Bot()
+bot.run(["https://www.tiktok.com/@example1/video/1234567890", "https://www.tiktok.com/@example2/video/0987654321"])
