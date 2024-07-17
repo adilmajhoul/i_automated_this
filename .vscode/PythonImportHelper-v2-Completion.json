@@ -50,6 +50,14 @@
         "documentation": {}
     },
     {
+        "label": "sleep",
+        "importPath": "time",
+        "description": "time",
+        "isExtraImport": true,
+        "detail": "time",
+        "documentation": {}
+    },
+    {
         "label": "sync_playwright",
         "importPath": "playwright.sync_api",
         "description": "playwright.sync_api",
@@ -271,6 +279,24 @@
         "importPath": "os",
         "description": "os",
         "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "cv2",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "cv2",
+        "description": "cv2",
+        "detail": "cv2",
+        "documentation": {}
+    },
+    {
+        "label": "numpy",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "numpy",
+        "description": "numpy",
+        "detail": "numpy",
         "documentation": {}
     },
     {
@@ -851,7 +877,7 @@
         "kind": 6,
         "importPath": "tiktok_to_ig_pyautogui.bot",
         "description": "tiktok_to_ig_pyautogui.bot",
-        "peekOfCode": "class Bot:\n    def __init__(self):\n        self.adress_bar = (187, 96)\n        self.snaptik_url_field = (592, 425)\n        self.snaptik_first_download = (991, 422)\n        self.snaptik_second_download = (1101, 233)\n        self.snaptik_home_logo = (147, 141)\n        self.browser_path = \"/usr/bin/google-chrome-stable\"\n        self.snaptik_url = \"https://snaptik.app/en1\"\n        self.bsuit_reel_upload_link = \"https://business.facebook.com/latest/reels_composer\"",
+        "peekOfCode": "class Bot:\n    def __init__(self):\n        self.adress_bar = (334, 97)\n        self.snaptik_url_field = (592, 425)\n        self.snaptik_first_download = (991, 422)\n        self.snaptik_second_download = (1101, 233)\n        self.snaptik_home_logo = (147, 141)\n        self.browser_path = \"/usr/bin/google-chrome-stable\"\n        self.snaptik_url = \"https://snaptik.app/en1\"\n        self.bsuit = {",
         "detail": "tiktok_to_ig_pyautogui.bot",
         "documentation": {}
     },

@@ -132,21 +132,21 @@ class Bot:
 
         image = self.wait_for_image("images/snaptik_logo.png")
 
-        # for url in tiktok_videos:
-        #     pg.click(self.snaptik_url_field)
-        #     sleep(1.5)
+        for url in tiktok_videos:
+            pg.click(self.snaptik_url_field)
+            sleep(1.5)
 
-        #     pg.typewrite(url)
-        #     sleep(1.5)
+            pg.typewrite(url)
+            sleep(1.5)
 
-        #     pg.click(self.snaptik_first_download)
-        #     sleep(2)
+            pg.click(self.snaptik_first_download)
+            sleep(2)
 
-        #     pg.click(self.snaptik_second_download)
-        #     sleep(1.5)
+            pg.click(self.snaptik_second_download)
+            sleep(1.5)
 
-        #     pg.click(self.snaptik_home_logo)
-        #     sleep(1.5)
+            pg.click(self.snaptik_home_logo)
+            sleep(1.5)
 
         # get videos names
         videos = [video for video in os.listdir("/home/x/0-videos_to_upload") if video.endswith(".mp4")]

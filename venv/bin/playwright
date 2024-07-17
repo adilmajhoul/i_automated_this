@@ -1,4 +1,4 @@
-#!/home/x/CODING/work/scraping/ig_automation/venv/bin/python
+#!/home/x/CODING/work/scraping/i_automated_this/venv/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys
