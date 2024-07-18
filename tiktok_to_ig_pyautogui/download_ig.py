@@ -14,14 +14,8 @@ class Download_IG:
     def __init__(self):
         self.adress_bar = (1679, 64)
 
-
-        
-
     def switch_to_tab(self, tab_number):
         pg.hotkey("alt", str(tab_number))
-
-
-
 
 
     def wait_for_image(self, image_path, timeout=2):
