@@ -3,6 +3,13 @@ import numpy as np
 from PIL import Image
 import os
 
+
+"""
+get early frames 
+template match using multiple scales
+if it detect one 
+then use that size to repace the image with it on all the frames
+"""
 class LogoRemover:
     def __init__(self, logo_to_remove, logo_to_add):
         self.template = cv2.imread(logo_to_remove, 0)
