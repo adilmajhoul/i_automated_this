@@ -6,8 +6,6 @@ import numpy as np
 import argparse
 
 
-# import os
-
 # You may also need the webbrowser library to open Chrome tabs initially
 import webbrowser
 
