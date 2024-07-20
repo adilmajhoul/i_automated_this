@@ -124,8 +124,37 @@ def main():
 
     args = parser.parse_args()
 
+    videos = [
+        "https://www.tiktok.com/@topbanat/video/7225186705127607558",
+        "https://www.tiktok.com/@topbanat/video/7224816030290431259",
+        "https://www.tiktok.com/@topbanat/video/7180113065533328646",
+        "https://www.tiktok.com/@topbanat/video/7170064269105515782",
+        "https://www.tiktok.com/@topbanat/video/7128913256722353413",
+        "https://www.tiktok.com/@topbanat/video/7128911419336084741",
+        "https://www.tiktok.com/@topbanat/video/7128761683803131141",
+        "https://www.tiktok.com/@topbanat/video/7128538273126845702",
+        "https://www.tiktok.com/@topbanat/video/7128524457735359749",
+        "https://www.tiktok.com/@topbanat/video/7079473736193248517",
+        "https://www.tiktok.com/@topbanat/video/7079499964493155590",
+        "https://www.tiktok.com/@topbanat/video/7102497703673842949",
+        "https://www.tiktok.com/@topbanat/video/7047278719857184001",
+        "https://www.tiktok.com/@topbanat/video/7073128613809343745",
+        "https://www.tiktok.com/@topbanat/video/6948872782616857857",
+        "https://www.tiktok.com/@topbanat/video/6948119460297428226",
+        "https://www.tiktok.com/@buuuz.tiktok/video/7184160347287194886",
+        "https://www.tiktok.com/@buuuz.tiktok/video/7183014621123546374",
+        "https://www.tiktok.com/@lfroj_2.0/video/7361190127399341317",
+        "https://www.tiktok.com/@lfroj_2.0/video/7327051907946630406",
+        "https://www.tiktok.com/@lfroj_2.0/video/7327052049802169605",
+        "https://www.tiktok.com/@lfroj_2.0/video/7288459442608164101",
+        "https://www.tiktok.com/@lfroj_2.0/video/7285130523138116870",
+        "https://www.tiktok.com/@lfroj_2.0/video/7285129709829197062",
+        "https://www.tiktok.com/@lfroj_2.0/video/7282912507235241221",
+        "https://www.tiktok.com/@lfroj_2.0/video/7275872744267468037",
+        "https://www.tiktok.com/@lfroj_2.0/video/7274398898662149382",
+    ]
     bot = Bot()
-    bot.run(args.urls)
+    bot.run(videos)
 
 
 if __name__ == "__main__":
