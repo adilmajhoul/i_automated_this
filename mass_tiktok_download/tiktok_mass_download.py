@@ -153,6 +153,7 @@ def main():
         "https://www.tiktok.com/@lfroj_2.0/video/7275872744267468037",
         "https://www.tiktok.com/@lfroj_2.0/video/7274398898662149382",
     ]
+    
     bot = Bot()
     bot.run(videos)
 
